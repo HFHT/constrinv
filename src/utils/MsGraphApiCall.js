@@ -2,6 +2,7 @@ import { loginRequest, graphConfig } from "../authConfig";
 import { msalInstance } from "../index";
 
 export async function callMsGraph() {
+    var graphData = {};
     const account = msalInstance.getActiveAccount();
     if (!account) {
         throw Error("No active account! Verify a user has been signed in and setActiveAccount has been called.");
@@ -22,7 +23,28 @@ export async function callMsGraph() {
         headers: headers
     };
 
-    return fetch(graphConfig.graphMeEndpoint, options)
-        .then(response => response.json())
-        .catch(error => console.log(error));
+    await Promise.all([
+        fetch(graphConfig.graphMeEndpoint, options).then(response => response.json()),
+        fetch(graphConfig.graphMePhoto, options).then(response => response.blob())
+    ])
+    .then(([myJSON, photoBlob]) => {
+        graphData = myJSON;        
+        return photoBlob;
+    })
+    .then((photoBlob => {
+        window.URL = window.URL || window.webkitURL;
+        graphData.photo = window.URL.createObjectURL(photoBlob);
+    }))
+    .catch(error => console.log(error))
+    .finally(() => {
+        return graphData;
+    });
+    return graphData;
+
+
+
+
+//    return fetch(graphConfig.graphMeEndpoint, options)
+//        .then(response => response.json())
+//        .catch(error => console.log(error));
 }

@@ -18,6 +18,7 @@ export const ProfileData = ({graphData}) => {
             <MailListItem mail={graphData.mail} />
             <PhoneListItem phone={graphData.businessPhones[0]} /> 
             <LocationListItem location={graphData.officeLocation} />
+            <PhotoListItem location={graphData.photo} />
         </List>
     );
 };
@@ -74,5 +75,15 @@ const LocationListItem = ({location}) => (
             </Avatar>
         </ListItemAvatar>
         <ListItemText primary="Location" secondary={location}/>
+    </ListItem>
+);
+
+const PhotoListItem = ({location}) => (
+    <ListItem>
+        <ListItemAvatar>
+            <Avatar src={location}>
+            </Avatar>
+        </ListItemAvatar>
+        <ListItemText primary="Photo" />
     </ListItem>
 );

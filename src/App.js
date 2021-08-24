@@ -1,20 +1,19 @@
-import { Switch, Route, useHistory } from "react-router-dom";
-// Material-UI imports
-import Grid from "@material-ui/core/Grid";
+import { useHistory } from "react-router-dom";
 
 // MSAL imports
-import { MsalProvider } from "@azure/msal-react";
+import { MsalProvider, AuthenticatedTemplate, UnauthenticatedTemplate, } from "@azure/msal-react";
 import { CustomNavigationClient } from "./utils/NavigationClient";
 
+import { ProfileContextProvider } from "./context/ProfileContext";
+import { LocContextProvider } from "./context/LocContext";
+import { NavContextProvider } from "./context/NavContext";
+
 // Sample app imports
-import { PageLayout } from "./ui-components/PageLayout";
-import { Home } from "./pages/Home";
-import { Profile } from "./pages/Profile";
-import { Logout } from "./pages/Logout";
+import { PageRoutes } from "./ui-components/PageRoutes";
 
 // Class-based equivalents of "Profile" component
-import { ProfileWithMsal } from "./pages/ProfileWithMsal";
-import { ProfileRawContext } from "./pages/ProfileRawContext";
+
+import NavBar from "./ui-components/NavBar";
 
 function App({ pca }) {
   // The next 3 lines are optional. This is how you configure MSAL to take advantage of the router's navigate functions when MSAL redirects between pages in your app
@@ -22,37 +21,26 @@ function App({ pca }) {
   const navigationClient = new CustomNavigationClient(history);
   pca.setNavigationClient(navigationClient);
 
+  const navCatItems = [{ id: 0, catName: '1234' }]
+
   return (
     <MsalProvider instance={pca}>
-      <PageLayout>
-        <Grid container >
-          <Pages />
-        </Grid>
-      </PageLayout>
+      <ProfileContextProvider >
+        <LocContextProvider >
+          <NavContextProvider navItems={{ navCatItems }}>
+            <NavBar></NavBar>
+          </NavContextProvider>
+          <AuthenticatedTemplate>
+            <PageRoutes></PageRoutes>
+          </AuthenticatedTemplate>
+          <UnauthenticatedTemplate>
+            <p>Must sign in!!!</p>
+          </UnauthenticatedTemplate>
+
+        </LocContextProvider>
+      </ProfileContextProvider>
     </MsalProvider>
   );
-}
-
-function Pages() {
-  return (
-    <Switch>
-      <Route path="/profile">
-        <Profile />
-      </Route>
-      <Route path="/profileWithMsal">
-        <ProfileWithMsal />
-      </Route>
-      <Route path="/profileRawContext">
-        <ProfileRawContext />
-      </Route>
-      <Route path="/logout">
-          <Logout />
-      </Route>
-      <Route path="/">
-        <Home />
-      </Route>
-    </Switch>
-  )
 }
 
 export default App;
