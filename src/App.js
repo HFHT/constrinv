@@ -13,7 +13,8 @@ import { PageRoutes } from "./ui-components/PageRoutes";
 
 // Class-based equivalents of "Profile" component
 
-import NavBar from "./ui-components/NavBar";
+import NavBar from "./ui-components/AppBar/NavBar";
+import MainBody from "./ui-components/MainBody";
 
 function App({ pca }) {
   // The next 3 lines are optional. This is how you configure MSAL to take advantage of the router's navigate functions when MSAL redirects between pages in your app
@@ -30,13 +31,14 @@ function App({ pca }) {
           <NavContextProvider navItems={{ navCatItems }}>
             <NavBar></NavBar>
           </NavContextProvider>
-          <AuthenticatedTemplate>
-            <PageRoutes></PageRoutes>
-          </AuthenticatedTemplate>
-          <UnauthenticatedTemplate>
-            <p>Must sign in!!!</p>
-          </UnauthenticatedTemplate>
-
+          <MainBody>
+            <AuthenticatedTemplate>
+              <PageRoutes></PageRoutes>
+            </AuthenticatedTemplate>
+            <UnauthenticatedTemplate>
+              <p>Must sign in!!!</p>
+            </UnauthenticatedTemplate>
+          </MainBody>
         </LocContextProvider>
       </ProfileContextProvider>
     </MsalProvider>

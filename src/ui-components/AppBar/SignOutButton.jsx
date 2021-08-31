@@ -1,17 +1,18 @@
 import { useState, useContext } from "react";
 import { useMsal } from "@azure/msal-react";
 import IconButton from '@material-ui/core/IconButton';
-import AccountCircle from '@material-ui/icons/AccountCircle';
+import Avatar from "@material-ui/core/Avatar";
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import { ProfileContext } from "../context/ProfileContext";
+import { ProfileContext } from "../../context/ProfileContext";
 
-export const SignOutButton = () => {
+export const SignOutButton = (props) => {
     const { instance } = useMsal();
     const profileContext = useContext(ProfileContext)
-    const { setGraphData } = profileContext
+    const { graphData, setGraphData } = profileContext
 
     const [anchorEl, setAnchorEl] = useState(null);
+
     const open = Boolean(anchorEl);
 
     const handleLogout = (logoutType) => {
@@ -22,12 +23,14 @@ export const SignOutButton = () => {
     }
 
     return (
-        <div>
+        <div className={props.className}>
             <IconButton
                 onClick={(event) => setAnchorEl(event.currentTarget)}
                 color="inherit"
             >
-                <AccountCircle />
+                {graphData &&
+                    <Avatar alt={graphData.displayName} src={graphData.photo} />
+                }
             </IconButton>
             <Menu
                 id="menu-appbar"
