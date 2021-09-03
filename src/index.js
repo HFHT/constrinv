@@ -12,7 +12,7 @@ import App from './App';
 // MSAL imports
 import { PublicClientApplication, EventType } from "@azure/msal-browser";
 import { msalConfig } from "./authConfig";
-
+require('dotenv').config()
 export const msalInstance = new PublicClientApplication(msalConfig);
 
 // Account selection logic is app dependent. Adjust as needed for different use cases.
