@@ -1,38 +1,39 @@
 
-import { Toolbar, AppBar, Typography, MenuItem, useMediaQuery } from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
+import { useMediaQuery } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import { withRouter } from 'react-router-dom'
 import Queues from "./Queues";
 import Locations from "./Locations";
 import SignInSignOutButton from "./SignInSignOutButton";
-import useStyles from "../../styles/useStyles";
 import HFHTIcon from '../../assets/HFHI-WhiteOnBlack-logo.gif'
 import SearchBox from './SearchBox';
+import { MyAppBar, MyToolBar, MyLogo, MyTitle, MyProfile } from '../../styles/appStyles'
 
 const NavBar = (props) => {
     const { history } = props;
-    const classes = useStyles();
     const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.down('sm'));    
+    const matches = useMediaQuery(theme.breakpoints.down('sm'));
     const handleMenuClick = (pageURL) => {
         console.log(pageURL)
         history.push(pageURL)
     }
     return (
-        <AppBar position="static" className={classes.navRoot}>
-            <Toolbar className={classes.toolBar}>
-                <MenuItem className={classes.toolLogo} disableGutters={matches} onClick={() => handleMenuClick('/')}>
-                    <img src={HFHTIcon} alt="" className={classes.logo} />
-                </MenuItem>
-                <Typography className={classes.toolTitle} variant="h4" noWrap>
+        <MyAppBar position="static" >
+            <MyToolBar >
+                <MyLogo disableGutters={matches} onClick={() => handleMenuClick('/')}>
+                    <img src={HFHTIcon} alt="" />
+                </MyLogo>
+                <MyTitle variant="h4" noWrap>
                     Inventory
-                </Typography>
-                <SearchBox className={classes.toolSearch} />
-                <Locations className={classes.toolLocations} orgProfile={props.orgProfile}/>
-                <Queues className={classes.toolQueues} disableGutters={matches} />
-                <SignInSignOutButton className={classes.toolProfile} orgProfile={props.orgProfile}/>
-            </Toolbar>
-        </AppBar>
+                </MyTitle>
+                <SearchBox />
+                <Locations orgProfile={props.orgProfile} />
+                <Queues disableGutters={matches} />
+                <MyProfile>
+                    <SignInSignOutButton orgProfile={props.orgProfile} />
+                </MyProfile>
+            </MyToolBar>
+        </MyAppBar>
     );
 };
 

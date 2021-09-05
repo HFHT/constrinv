@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { useHistory } from "react-router-dom";
-import { CircularProgress } from '@material-ui/core';
+import { CircularProgress } from '@mui/material';
 
 // MSAL imports
 import { MsalProvider, AuthenticatedTemplate, UnauthenticatedTemplate, } from "@azure/msal-react";
@@ -28,13 +28,15 @@ function App({ pca }) {
   console.log({pca})
   const [orgProfile, setOrgProfile] = useState()
   const [loading, setLoading] = useState(true)
+  const [badgeCounts, setBadgeCounts] = useState()
   useEffect(() => {
     async function GetProfile() {
       const a1 = await MongoAPI({ method: 'find', db: 'Inventory', collection: 'Profile', find: {"_id":0} })
       const a2 = await MongoAPI({ method: 'find', db: 'Inventory', collection: '_Categories', find: {"_id":0} })
-      return {profile:a1[0], categories:a2[0]}
+      const a3 = await MongoAPI({ method: 'countQueues', db: 'Inventory', collection: '', find: {"_id":0} })
+      return {orgProfile:{profile:a1[0], categories:a2[0]}, badgeCounts:a3}
     }
-    GetProfile().then(result => {console.log(result); setOrgProfile(result); setLoading(false)})
+    GetProfile().then(result => {console.log(result); setOrgProfile(result.orgProfile); setBadgeCounts(result.badgeCounts); setLoading(false)})
   }, [])
 
 
@@ -44,7 +46,7 @@ function App({ pca }) {
     <MsalProvider instance={pca}>
       <ProfileContextProvider orgProfile={orgProfile}>
         {loading ? <CircularProgress /> :
-          <LocContextProvider>
+          <LocContextProvider badgeCounts={badgeCounts}>
             <NavContextProvider navItems={{ navCatItems }}>
               <NavBar orgProfile={orgProfile} instance={pca}></NavBar>
             </NavContextProvider>

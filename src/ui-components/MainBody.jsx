@@ -1,11 +1,10 @@
-import useStyles from "../styles/useStyles";
+import { BodyRoot } from '../styles/appStyles';
 
 const MainBody = (props) => {
-    const classes = useStyles()
     return (
-        <div className={classes.bodyRoot}>
+        <BodyRoot>
             {props.children}
-        </div>
+        </BodyRoot>
     );
 };
 

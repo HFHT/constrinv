@@ -1,26 +1,18 @@
-import { Search } from '@material-ui/icons';
-import { InputBase } from '@material-ui/core';
+import { Search as SearchIcon, CropFree, QrCode2 } from '@mui/icons-material';
 
-import useStyles from "../../styles/useStyles";
+import { Search, SearchIconWrapper, StyledInputBase } from "../../styles/appStyles";
 
-const SearchBox = (props) => {
-  const classes = useStyles();
+const SearchBox = () => {
   return (
-    <div className={props.className}>
-      <div className={classes.search}>
-        <div className={classes.searchIcon}>
-          <Search />
-        </div>
-        <InputBase
-          placeholder="Search…"
-          classes={{
-            root: classes.searchInputRoot,
-            input: classes.searchInputInput,
-          }}
-          inputProps={{ 'aria-label': 'search' }}
-        />
-      </div>
-    </div>
+    <Search>
+      <SearchIconWrapper>
+        <QrCode2 />
+      </SearchIconWrapper>
+      <StyledInputBase
+        placeholder="Search…"
+        inputProps={{ 'aria-label': 'search' }}
+      />
+    </Search>
   )
 
 }

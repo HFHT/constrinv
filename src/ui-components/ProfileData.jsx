@@ -1,14 +1,6 @@
 import React from "react";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import Avatar from "@material-ui/core/Avatar";
-import PersonIcon from '@material-ui/icons/Person';
-import WorkIcon  from "@material-ui/icons/Work";
-import MailIcon from '@material-ui/icons/Mail';
-import PhoneIcon from '@material-ui/icons/Phone';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
+import { List, ListItem, ListItemText, ListItemAvatar, Avatar } from "@mui/material";
+import { Person, Work, Mail, Phone, LocationOn } from '@mui/icons-material';
 
 export const ProfileData = ({graphData}) => {
     return (
@@ -27,7 +19,7 @@ const NameListItem = ({name}) => (
     <ListItem>
         <ListItemAvatar>
             <Avatar>
-                <PersonIcon />
+                <Person />
             </Avatar>
         </ListItemAvatar>
         <ListItemText primary="Name" secondary={name}/>
@@ -38,7 +30,7 @@ const JobTitleListItem = ({jobTitle}) => (
     <ListItem>
         <ListItemAvatar>
             <Avatar>
-                <WorkIcon />
+                <Work />
             </Avatar>
         </ListItemAvatar>
         <ListItemText primary="Title" secondary={jobTitle}/>
@@ -49,7 +41,7 @@ const MailListItem = ({mail}) => (
     <ListItem>
         <ListItemAvatar>
             <Avatar>
-                <MailIcon />
+                <Mail />
             </Avatar>
         </ListItemAvatar>
         <ListItemText primary="Mail" secondary={mail}/>
@@ -60,7 +52,7 @@ const PhoneListItem = ({phone}) => (
     <ListItem>
         <ListItemAvatar>
             <Avatar>
-                <PhoneIcon />
+                <Phone />
             </Avatar>
         </ListItemAvatar>
         <ListItemText primary="Phone" secondary={phone}/>
@@ -71,7 +63,7 @@ const LocationListItem = ({location}) => (
     <ListItem>
         <ListItemAvatar>
             <Avatar>
-                <LocationOnIcon />
+                <LocationOn />
             </Avatar>
         </ListItemAvatar>
         <ListItemText primary="Location" secondary={location}/>

@@ -1,11 +1,11 @@
 import Location from './Location'
-
+import { LocationsWrapper} from "../../styles/appStyles";
 const Locations = (props) => {
     return (
-    <div className={props.className}>
+    <LocationsWrapper>
         <Location locLabel="Location:" locSetter="useLoc" orgProfile={props.orgProfile}/>
         <Location locLabel="Ship To:" locSetter="useShip" orgProfile={props.orgProfile}/>
-    </div>
+    </LocationsWrapper>
     )
 }
 export default Locations

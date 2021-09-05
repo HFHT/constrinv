@@ -1,12 +1,9 @@
 import { useState, useContext } from "react";
 import { useMsal } from "@azure/msal-react";
-import IconButton from '@material-ui/core/IconButton';
-import Avatar from "@material-ui/core/Avatar";
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
+import { Avatar, MenuItem, Menu, IconButton } from "@mui/material";
 import { ProfileContext } from "../../context/ProfileContext";
 
-export const SignOutButton = (props) => {
+export const SignOutButton = () => {
     const { instance } = useMsal();
     const profileContext = useContext(ProfileContext)
     const { graphData, setGraphData } = profileContext
@@ -23,7 +20,7 @@ export const SignOutButton = (props) => {
     }
 
     return (
-        <div className={props.className}>
+        <div>
             <IconButton
                 onClick={(event) => setAnchorEl(event.currentTarget)}
                 color="inherit"

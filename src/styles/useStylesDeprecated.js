@@ -1,4 +1,5 @@
-import { makeStyles, alpha } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
+import { alpha } from '@mui/material/styles'
 
 const useStyles = makeStyles((theme) => ({
     toolBar: {
@@ -57,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     searchIcon: {
-      padding: theme.spacing(0, 2),
+      padding: theme.spacing(0, 0),
       height: '100%',
       position: 'absolute',
       pointerEvents: 'none',
