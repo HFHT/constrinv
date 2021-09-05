@@ -37,6 +37,7 @@ export async function callMsGraph() {
     }))
     .catch(error => console.log(error))
     .finally(() => {
+        console.log(graphData)
         return graphData;
     });
     return graphData;

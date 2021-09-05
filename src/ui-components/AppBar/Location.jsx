@@ -13,13 +13,9 @@ const Location = (props) => {
   const [cookies, setCookie, removeCookie] = useCookies(["locName"]);
 
   const classes = useStyles()
-  const locations =  [
-      {"id": 0,"locName": props.locSetter === 'useLoc' ? 'All' : '--'},
-      {"id": 1,"locName": "Office"},
-      {"id": 2,"locName": "Carters Court"},
-      {"id": 3,"locName": "Marana"},
-      {"id": 8,"locName": "CDP"}
-  ]
+  var locations = props.orgProfile.profile.Locations
+  console.debug(locations)
+
   const handleMenuClick = (e) => {
     console.debug(e.currentTarget)
     setLocOpen( true )

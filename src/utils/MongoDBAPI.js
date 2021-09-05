@@ -1,15 +1,15 @@
 // Azure serverless functions are utilized to access the MongoDB
 
-export async function MongoGet( {db, collection, find} ) {
+export async function MongoAPI( req ) {
     const headers = new Headers();
 
     const options = {
         method: "GET",
         headers: headers
     };
-
-    return fetch(`https://hfhtapi.azurewebsites.net/api/HFHTget?db=${db}&collection=${collection}`, options)
-        .then(response => response.json())
+    
+    return fetch(`${process.env.REACT_APP_AZURE_FUNC_URL}/HFHTMongoAPI?req=${JSON.stringify(req)}`, options)
+        .then(response => {console.log(response); return response.json()})
         .catch(error => console.log(error));
 
 }

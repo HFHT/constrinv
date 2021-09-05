@@ -28,9 +28,9 @@ const NavBar = (props) => {
                     Inventory
                 </Typography>
                 <SearchBox className={classes.toolSearch} />
-                <Locations className={classes.toolLocations} />
+                <Locations className={classes.toolLocations} orgProfile={props.orgProfile}/>
                 <Queues className={classes.toolQueues} disableGutters={matches} />
-                <SignInSignOutButton className={classes.toolProfile}/>
+                <SignInSignOutButton className={classes.toolProfile} orgProfile={props.orgProfile}/>
             </Toolbar>
         </AppBar>
     );
