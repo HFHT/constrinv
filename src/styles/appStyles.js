@@ -1,5 +1,5 @@
 import { styled, alpha } from '@mui/material/styles';
-import { InputBase, AppBar, Toolbar, Typography, MenuItem, Popover, List, Box } from '@mui/material';
+import { InputBase, AppBar, Toolbar, Typography, MenuItem, Popover, List, Box, IconButton } from '@mui/material';
 
 export const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -11,11 +11,14 @@ export const Search = styled('div')(({ theme }) => ({
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
-    width: '100%',
+//    width: '100%',
     [theme.breakpoints.up('sm')]: {
         marginLeft: theme.spacing(3),
         width: 'auto',
     },
+    [theme.breakpoints.down('multiLine')]: {
+        order: 5
+    },    
 }));
 
 export const SearchIconWrapper = styled('div')(({ theme }) => ({
@@ -36,7 +39,7 @@ export const StyledInputBase = styled(InputBase)(({ theme }) => ({
         paddingLeft: `calc(1em + ${theme.spacing(4)})`,
         transition: theme.transitions.create('width'),
         width: '100%',
-        [theme.breakpoints.up('md')]: {
+        [theme.breakpoints.up('noLabel')]: {
             width: '20ch',
         },
     },
@@ -47,20 +50,31 @@ export const MyAppBar = styled(AppBar)({
     zIndex: 1301
 });
 
-export const MyToolBar = styled(Toolbar)({
-    display: 'flex',
-    //      flexFlow: 'wrap',
+export const MyToolBar = styled(Toolbar)(({ theme }) => ({
+    display: 'flex',      
     justifyContent: 'space-between',
     paddingRight: '6px !important',
-    paddingLeft: '0px !important'
-});
-
-export const MyLogo = styled(MenuItem)(() => ({
-    order: 1
+    paddingLeft: '0px !important',
+    [theme.breakpoints.down('multiLine')]: {
+        flexFlow: 'wrap'
+    },
 }));
 
-export const MyProfile = styled(MenuItem)(() => ({
-    order: 6
+export const MyLogo = styled(MenuItem)(({ theme }) => ({
+    order: 1,
+    [theme.breakpoints.down('multiLine')]: {
+        padding: 0,
+//        width: '100px'
+    }      
+}));
+
+export const MyProfile = styled(MenuItem)(({ theme }) => ({
+    order: 6,
+    [theme.breakpoints.down('multiLine')]: {
+        order: 3,
+        paddingLeft: '0px',
+        paddingRight: '0px'
+    }       
 }));
 
 export const MyTitle = styled(Typography)(({ theme }) => ({
@@ -68,7 +82,7 @@ export const MyTitle = styled(Typography)(({ theme }) => ({
     flexGrow: 1,
     display: 'flex',
     justifyContent: 'center',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('noLabel')]: {
       display: 'none',
     },  
 }));
@@ -96,13 +110,41 @@ export const LocationList = styled(List)(({ theme }) => ({
 }));
 
 export const QueuesBox = styled(Box)(({ theme }) => ({
-    order: 5
+    order: 5,
+    [theme.breakpoints.down('multiLine')]: {
+        order: 2
+    },       
+}));
+
+export const QueuesItem = styled(MenuItem)(({ theme }) => ({
+    [theme.breakpoints.down('multiLine')]: {
+        paddingLeft: '4px',
+        paddingRight: '4px'
+    }, 
+    [theme.breakpoints.down('smallLogo')]: {
+        paddingLeft: '0px',
+        paddingRight: '0px'
+    },            
 }));
 
 export const BadgeWrapper = styled('p')(({ theme }) => ({
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('noLabel')]: {
         display: 'none',
       }
+}));
+
+export const SignOutWrapper = styled('div')(({ theme }) => ({
+    [theme.breakpoints.down('multiLine')]: {
+        paddingLeft: '0px',
+        paddingRight: '0px'
+    },       
+}));
+
+export const SignOutButtonWrapper = styled(IconButton)(({ theme }) => ({
+    [theme.breakpoints.down('multiLine')]: {
+        paddingLeft: '0px',
+        paddingRight: '0px'
+    },       
 }));
 
 export const BodyRoot = styled('div')(({ theme }) => ({

@@ -11,7 +11,7 @@ export const SignInButton = () => {
     return (
             <Button
                 onClick={() => handleLogin("redirect")} key="loginRedirect"
-                color="inherit"
+                color="error"
             >
                 Login
             </Button>

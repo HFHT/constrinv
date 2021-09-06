@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { useMsal } from "@azure/msal-react";
 import { Avatar, MenuItem, Menu, IconButton } from "@mui/material";
+import { SignOutWrapper, SignOutButtonWrapper } from "../../styles/appStyles";
 import { ProfileContext } from "../../context/ProfileContext";
 
 export const SignOutButton = () => {
@@ -20,15 +21,15 @@ export const SignOutButton = () => {
     }
 
     return (
-        <div>
-            <IconButton
+        <SignOutWrapper>
+            <SignOutButtonWrapper
                 onClick={(event) => setAnchorEl(event.currentTarget)}
                 color="inherit"
             >
                 {graphData &&
                     <Avatar alt={graphData.displayName} src={graphData.photo} />
                 }
-            </IconButton>
+            </SignOutButtonWrapper>
             <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
@@ -46,6 +47,6 @@ export const SignOutButton = () => {
             >
                 <MenuItem onClick={() => handleLogout("popup")} key="logoutPopup">Sign out...</MenuItem>
             </Menu>
-        </div>
+        </SignOutWrapper>
     )
 };

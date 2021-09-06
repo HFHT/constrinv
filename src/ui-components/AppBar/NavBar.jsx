@@ -6,13 +6,15 @@ import Queues from "./Queues";
 import Locations from "./Locations";
 import SignInSignOutButton from "./SignInSignOutButton";
 import HFHTIcon from '../../assets/HFHI-WhiteOnBlack-logo.gif'
+import HFHTSmallIcon from '../../assets/HFHI-WhiteOnBlack-logo-Small.gif'
 import SearchBox from './SearchBox';
 import { MyAppBar, MyToolBar, MyLogo, MyTitle, MyProfile } from '../../styles/appStyles'
 
 const NavBar = (props) => {
     const { history } = props;
     const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.down('sm'));
+    const matches = useMediaQuery(theme.breakpoints.down('smallLogo'));
+    const logoSize = useMediaQuery(theme.breakpoints.down('smallLogo'));
     const handleMenuClick = (pageURL) => {
         console.log(pageURL)
         history.push(pageURL)
@@ -21,7 +23,7 @@ const NavBar = (props) => {
         <MyAppBar position="static" >
             <MyToolBar >
                 <MyLogo disableGutters={matches} onClick={() => handleMenuClick('/')}>
-                    <img src={HFHTIcon} alt="" />
+                    <img src={logoSize ? HFHTSmallIcon : HFHTIcon} alt="" />
                 </MyLogo>
                 <MyTitle variant="h4" noWrap>
                     Inventory

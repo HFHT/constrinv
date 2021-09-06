@@ -14,6 +14,16 @@ export const theme = createMuiTheme({
     },
     background: {
       default: '#fff',
-    },
+    }
   },
+  breakpoints: {
+    values: {
+      xs: 0,
+      smallLogo: 400,
+      multiLine: 900,
+      noLabel: 1140,
+      lg: 1280,
+      xl: 1920
+    }
+  }
 });

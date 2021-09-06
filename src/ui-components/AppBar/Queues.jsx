@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { IconButton, Badge, MenuItem } from '@mui/material';
 import { ShoppingCart, Print, LocalShipping, PostAdd } from '@mui/icons-material';
 import { withRouter } from 'react-router-dom'
-import { QueuesBox, BadgeWrapper } from "../../styles/appStyles";
+import { QueuesBox, QueuesItem, BadgeWrapper } from "../../styles/appStyles";
 import { LocContext } from "../../context/LocContext"
 
 const Queues = (props) => {
@@ -15,7 +15,7 @@ const Queues = (props) => {
     }
     return (
         <QueuesBox display="flex" flexDirection="row" justifyContent="inherit" padding={0} style={{ marginLeft: 'auto' }}>
-            <MenuItem onClick={() => handleMenuClick('/printQR')} disableGutters={disableGutters}>
+            <QueuesItem onClick={() => handleMenuClick('/printQR')} disableGutters={disableGutters}>
                 <IconButton aria-label="QR Labels" color="inherit">
                     <Badge badgeContent={badgeCounts.QueuePrintBarCode} color="secondary">
                         <Print />
@@ -24,7 +24,8 @@ const Queues = (props) => {
                 <BadgeWrapper>
                     Barcodes
                 </BadgeWrapper>
-            </MenuItem> <MenuItem onClick={() => handleMenuClick('/orders')} disableGutters={disableGutters}>
+            </QueuesItem>
+            <QueuesItem onClick={() => handleMenuClick('/orders')} disableGutters={disableGutters}>
                 <IconButton aria-label="Pending orders" color="inherit">
                     <Badge badgeContent={badgeCounts.QueueOrder} color="secondary">
                         <ShoppingCart />
@@ -33,8 +34,8 @@ const Queues = (props) => {
                 <BadgeWrapper>
                     Orders
                 </BadgeWrapper>
-            </MenuItem>
-            <MenuItem onClick={() => handleMenuClick('/shipment')} disableGutters={disableGutters}>
+            </QueuesItem>
+            <QueuesItem onClick={() => handleMenuClick('/shipment')} disableGutters={disableGutters}>
                 <IconButton aria-label="Items in shipment" color="inherit">
                     <Badge badgeContent={badgeCounts.QueueShipment} color="secondary">
                         <LocalShipping />
@@ -43,8 +44,8 @@ const Queues = (props) => {
                 <BadgeWrapper>
                     Shipment
                 </BadgeWrapper>
-            </MenuItem>
-            <MenuItem onClick={() => handleMenuClick('/pallet')} disableGutters={disableGutters}>
+            </QueuesItem>
+            <QueuesItem onClick={() => handleMenuClick('/pallet')} disableGutters={disableGutters}>
                 <IconButton aria-label="Items in pallet" color="inherit">
                     <Badge badgeContent={badgeCounts.QueuePallet} color="secondary">
                         <PostAdd />
@@ -53,7 +54,7 @@ const Queues = (props) => {
                 <BadgeWrapper>
                     Pallet
                 </BadgeWrapper>
-            </MenuItem>
+            </QueuesItem>
         </QueuesBox>
     );
 }
