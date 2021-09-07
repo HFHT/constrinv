@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { IconButton, Badge, MenuItem } from '@mui/material';
 import { ShoppingCart, Print, LocalShipping, PostAdd } from '@mui/icons-material';
 import { withRouter } from 'react-router-dom'
-import { QueuesBox, QueuesItem, BadgeWrapper } from "../../styles/appStyles";
+import { QueuesBox, QueuesItem, BadgeWrapper } from "../../styles/queuesStyles";
 import { LocContext } from "../../context/LocContext"
 
 const Queues = (props) => {

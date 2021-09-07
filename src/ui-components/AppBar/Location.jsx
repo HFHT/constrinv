@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { List, ListItem, ListItemText } from '@mui/material';
 import { useCookies } from "react-cookie";
 import { LocContext } from "../../context/LocContext"
-import { LocationList, LocationPopover } from "../../styles/appStyles";
+import { LocationList, LocationPopover } from "../../styles/locationStyles";
 
 const Location = (props) => {
     const locContext = useContext(LocContext)

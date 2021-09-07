@@ -8,6 +8,7 @@ export const NavContextProvider = props => {
     const [navItems, setNavCat] = useState([])
     const [elAnchor, setelAnchor] = useState(null)
     const [navOpen, setNavOpen] = useState(false)
+    const [navBuilt, setNavBuilt] = useState(false)
 
     const itemContext = {
         navItems,
@@ -15,7 +16,9 @@ export const NavContextProvider = props => {
         elAnchor,
         setelAnchor,
         navOpen,
-        setNavOpen   
+        setNavOpen,
+        navBuilt,
+        setNavBuilt   
     }
     return (
         <NavContext.Provider value={itemContext}>

@@ -1,7 +1,7 @@
 import React, {  } from "react";
 import { Switch, Route } from "react-router-dom";
 
-import { Profile } from "../pages/Profile";
+import { Inventory } from "../pages/Inventory";
 import { Orders } from "../pages/Orders";
 import { Pallet } from "../pages/Pallet";
 import { PrintQR } from "../pages/PrintQR";
@@ -24,7 +24,7 @@ export function PageRoutes() {
         <Shipment />
       </Route>
       <Route path="/">
-        <Profile />
+        <Inventory />
       </Route>
     </Switch>
   )

@@ -1,6 +1,6 @@
 import { Search as SearchIcon, CropFree, QrCode2 } from '@mui/icons-material';
 
-import { Search, SearchIconWrapper, StyledInputBase } from "../../styles/appStyles";
+import { Search, SearchIconWrapper, StyledInputBase } from "../../styles/searchAreaStyles";
 
 const SearchBox = () => {
   return (

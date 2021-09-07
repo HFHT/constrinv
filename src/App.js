@@ -49,7 +49,6 @@ function App({ pca }) {
           <LocContextProvider badgeCounts={badgeCounts}>
             <NavContextProvider navItems={{ navCatItems }}>
               <NavBar orgProfile={orgProfile} instance={pca}></NavBar>
-            </NavContextProvider>
             <MainBody>
               <AuthenticatedTemplate>
                 <PageRoutes orgProfile={orgProfile}></PageRoutes>
@@ -58,6 +57,7 @@ function App({ pca }) {
                 <p>Must sign in!!!</p>
               </UnauthenticatedTemplate>
             </MainBody>
+            </NavContextProvider>
           </LocContextProvider>
         }
       </ProfileContextProvider>

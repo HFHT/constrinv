@@ -1,5 +1,5 @@
 import Location from './Location'
-import { LocationsWrapper} from "../../styles/appStyles";
+import { LocationsWrapper} from "../../styles/locationStyles";
 const Locations = (props) => {
     return (
     <LocationsWrapper>

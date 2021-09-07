@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { useMsal } from "@azure/msal-react";
-import { Avatar, MenuItem, Menu, IconButton } from "@mui/material";
-import { SignOutWrapper, SignOutButtonWrapper } from "../../styles/appStyles";
+import { Avatar, MenuItem, Menu } from "@mui/material";
+import { SignOutWrapper, SignOutButtonWrapper } from "../../styles/signinStyles";
 import { ProfileContext } from "../../context/ProfileContext";
 
 export const SignOutButton = () => {

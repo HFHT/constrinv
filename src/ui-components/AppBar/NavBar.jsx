@@ -1,5 +1,5 @@
 
-import { useMediaQuery } from '@mui/material';
+import { AppBar, useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { withRouter } from 'react-router-dom'
 import Queues from "./Queues";
@@ -8,11 +8,13 @@ import SignInSignOutButton from "./SignInSignOutButton";
 import HFHTIcon from '../../assets/HFHI-WhiteOnBlack-logo.gif'
 import HFHTSmallIcon from '../../assets/HFHI-WhiteOnBlack-logo-Small.gif'
 import SearchBox from './SearchBox';
-import { MyAppBar, MyToolBar, MyLogo, MyTitle, MyProfile } from '../../styles/appStyles'
+import { appBarStyles, MyToolBar, MyLogo, MyTitle, MyProfile } from '../../styles/mainNavStyles'
+import SubBar from './SubBar';
 
 const NavBar = (props) => {
     const { history } = props;
     const theme = useTheme();
+    const classes = appBarStyles()
     const matches = useMediaQuery(theme.breakpoints.down('smallLogo'));
     const logoSize = useMediaQuery(theme.breakpoints.down('smallLogo'));
     const handleMenuClick = (pageURL) => {
@@ -20,7 +22,7 @@ const NavBar = (props) => {
         history.push(pageURL)
     }
     return (
-        <MyAppBar position="static" >
+        <AppBar position="static" className={classes.appBar}>
             <MyToolBar >
                 <MyLogo disableGutters={matches} onClick={() => handleMenuClick('/')}>
                     <img src={logoSize ? HFHTSmallIcon : HFHTIcon} alt="" />
@@ -35,7 +37,8 @@ const NavBar = (props) => {
                     <SignInSignOutButton orgProfile={props.orgProfile} />
                 </MyProfile>
             </MyToolBar>
-        </MyAppBar>
+            <SubBar />
+        </AppBar>
     );
 };
 

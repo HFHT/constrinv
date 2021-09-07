@@ -20,7 +20,9 @@ export const theme = createMuiTheme({
     values: {
       xs: 0,
       smallLogo: 400,
+      sm: 600,
       multiLine: 900,
+      md: 960,
       noLabel: 1140,
       lg: 1280,
       xl: 1920
