@@ -8,8 +8,8 @@ import { MsalProvider, AuthenticatedTemplate, UnauthenticatedTemplate, } from "@
 import { CustomNavigationClient } from "./utils/NavigationClient";
 
 import { ProfileContextProvider } from "./context/ProfileContext";
-import { LocContextProvider } from "./context/LocContext";
-import { NavContextProvider } from "./context/NavContext";
+import { useDispatch } from 'react-redux'
+import { setAll } from './features/badges/badgesSlice'
 
 // Sample app imports
 import { PageRoutes } from "./ui-components/PageRoutes";
@@ -25,30 +25,27 @@ function App({ pca }) {
   const history = useHistory();
   const navigationClient = new CustomNavigationClient(history);
   pca.setNavigationClient(navigationClient);
-  console.log({pca})
+  console.log({ pca })
   const [orgProfile, setOrgProfile] = useState()
   const [loading, setLoading] = useState(true)
-  const [badgeCounts, setBadgeCounts] = useState()
+  const dispatch = useDispatch()
   useEffect(() => {
     async function GetProfile() {
-      const a1 = await MongoAPI({ method: 'find', db: 'Inventory', collection: 'Profile', find: {"_id":0} })
-      const a2 = await MongoAPI({ method: 'find', db: 'Inventory', collection: '_Categories', find: {"_id":0} })
-      const a3 = await MongoAPI({ method: 'countQueues', db: 'Inventory', collection: '', find: {"_id":0} })
-      return {orgProfile:{profile:a1[0], categories:a2[0]}, badgeCounts:a3}
+      const a1 = await MongoAPI({ method: 'find', db: 'Inventory', collection: 'Profile', find: { "_id": 0 } })
+      const a2 = await MongoAPI({ method: 'find', db: 'Inventory', collection: '_Categories', find: { "_id": 0 } })
+      const a3 = await MongoAPI({ method: 'countQueues', db: 'Inventory', collection: '', find: { "_id": 0 } })
+      return { orgProfile: { profile: a1[0], categories: a2[0] }, badgeCounts: a3 }
     }
-    GetProfile().then(result => {console.log(result); setOrgProfile(result.orgProfile); setBadgeCounts(result.badgeCounts); setLoading(false)})
+    GetProfile().then(result => { console.log(result); setOrgProfile(result.orgProfile); /*setBadgeCounts(result.badgeCounts);*/ dispatch(setAll(result.badgeCounts)); setLoading(false) })
   }, [])
-
-
-  const navCatItems = [{ id: 0, catName: '1234' }]
 
   return (
     <MsalProvider instance={pca}>
       <ProfileContextProvider orgProfile={orgProfile}>
         {loading ? <CircularProgress /> :
-          <LocContextProvider badgeCounts={badgeCounts}>
-            <NavContextProvider navItems={{ navCatItems }}>
-              <NavBar orgProfile={orgProfile} instance={pca}></NavBar>
+
+          <div>
+            <NavBar orgProfile={orgProfile} instance={pca}></NavBar>
             <MainBody>
               <AuthenticatedTemplate>
                 <PageRoutes orgProfile={orgProfile}></PageRoutes>
@@ -57,8 +54,8 @@ function App({ pca }) {
                 <p>Must sign in!!!</p>
               </UnauthenticatedTemplate>
             </MainBody>
-            </NavContextProvider>
-          </LocContextProvider>
+          </div>
+
         }
       </ProfileContextProvider>
     </MsalProvider>

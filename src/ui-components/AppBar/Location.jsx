@@ -1,16 +1,17 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { List, ListItem, ListItemText } from '@mui/material';
 import { useCookies } from "react-cookie";
-import { LocContext } from "../../context/LocContext"
+import { useSelector, useDispatch } from 'react-redux'
+import { setLocName, setShipName } from '../../features/locations/locationsSlice'
 import { LocationList, LocationPopover } from "../../styles/locationStyles";
 
 const Location = (props) => {
-    const locContext = useContext(LocContext)
-    const { locName, setLocName, shipName, setShipName } = locContext
     const [anchorEl, setAnchorEl] = useState(null);
     const [locOpen, setLocOpen] = useState(false);
     const [cookies, setCookie, removeCookie] = useCookies(["locName"]);
- 
+    const dispatch = useDispatch()
+    const { locName, shipName } = useSelector((state) => state.locations)
+
     var locations = props.orgProfile.profile.Locations
     console.debug(locations)
 
@@ -26,7 +27,7 @@ const Location = (props) => {
     const handleSubClick = (props, e) => {
         console.debug('subclick')
         setLocOpen(false)
-        props.locSetter === 'useLoc' ? setLocName(props.locName) : setShipName(props.locName)
+        props.locSetter === 'useLoc' ? dispatch(setLocName(props.locName)) : dispatch(setShipName(props.locName))
         setCookie("locName", locName, { path: "/" })
     };
     const id = locOpen ? 'simple-popover' : undefined;

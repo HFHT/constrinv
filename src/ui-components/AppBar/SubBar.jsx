@@ -1,6 +1,5 @@
 import { useLocation } from "react-router-dom"
-import { InvNavMenuBar } from "../ui-Inventory/InvNavMenuBar"
-import { InvCatPopupMenu } from '../ui-Inventory/InvCatPopupMenu'
+import { InvCatNavBar } from "../ui-Inventory/InvCatNavBar"
 
 const SubBar = () => {
     const route = useLocation()
@@ -10,8 +9,7 @@ const SubBar = () => {
         <div>
             {match &&
             <div>
-            <InvNavMenuBar />
-            <InvCatPopupMenu />
+            <InvCatNavBar />
             </div>
             }
         </div>

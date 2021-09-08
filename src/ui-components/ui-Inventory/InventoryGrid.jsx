@@ -1,8 +1,7 @@
-import React, { useState, useContext, useEffect  } from 'react';
+
 import { Grid, Fab } from '@mui/material';
 import { Add as AddIcon } from '@mui/icons-material';
-import { ProfileContext } from '../../context/ProfileContext'
-import { LocContext } from '../../context/LocContext'
+import { useSelector } from 'react-redux'
 import CardInventory from './CardInventory'
 import { } from '../../styles/appStyles'
 import { InventoryItems } from '../../scaffold/InventoryStructure'
@@ -11,8 +10,7 @@ import { invGridStyles } from '../../styles/inventoryCardStyles'
 export const InventoryGrid = () => {
     const classes = invGridStyles()
     const inventoryObj = InventoryItems
-    const locContext = useContext(LocContext)
-    const { locName } = locContext   
+    const { locName } = useSelector((state) => state.navigation)     
     console.debug(locName)
     const handleInvEditClick = (props) => {
       console.log(props)

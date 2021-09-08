@@ -8,6 +8,8 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from "./styles/theme";
 import App from './App';
+import { store } from './store'
+import { Provider } from 'react-redux'
 
 // MSAL imports
 import { PublicClientApplication, EventType } from "@azure/msal-browser";
@@ -29,12 +31,14 @@ msalInstance.addEventCallback((event) => {
 });
 
 ReactDOM.render(
-    <React.StrictMode>
-        <Router>
-            <ThemeProvider theme={theme}>
-                <App pca={msalInstance} />
-            </ThemeProvider>
-        </Router>
-    </React.StrictMode>,
-    document.getElementById('root')
+  <React.StrictMode>
+    <Router>
+      <ThemeProvider theme={theme}>
+        <Provider store={store}>
+          <App pca={msalInstance} />
+        </Provider>
+      </ThemeProvider>
+    </Router>
+  </React.StrictMode>,
+  document.getElementById('root')
 );

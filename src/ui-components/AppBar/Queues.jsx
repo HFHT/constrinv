@@ -1,14 +1,12 @@
-import React, { useContext } from 'react';
-import { IconButton, Badge, MenuItem } from '@mui/material';
+import { IconButton, Badge } from '@mui/material';
 import { ShoppingCart, Print, LocalShipping, PostAdd } from '@mui/icons-material';
 import { withRouter } from 'react-router-dom'
 import { QueuesBox, QueuesItem, BadgeWrapper } from "../../styles/queuesStyles";
-import { LocContext } from "../../context/LocContext"
+import { useSelector } from 'react-redux'
 
 const Queues = (props) => {
     const { history, disableGutters } = props;
-    const locContext = useContext(LocContext)
-    const { badgeCounts } = locContext
+    const badgeCounts = useSelector((state) => state.badges.queues)    
     const handleMenuClick = (pageURL) => {
         console.log(pageURL)
         history.push(pageURL)
