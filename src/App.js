@@ -15,13 +15,18 @@ import Footer from './ui-components/Footer'
 import MainBody from "./ui-components/MainBody";
 // Function imports
 import { MongoAPI } from './services/MongoDBAPI';
+import { useGetBadgeCountsQuery, useGetFromDBQuery } from './services/rtkquery/MongoDB'
 
 function App({ pca }) {
   // The next 3 lines are optional. This is how you configure MSAL to take advantage of the router's navigate functions when MSAL redirects between pages in your app
   const history = useHistory();
   const navigationClient = new CustomNavigationClient(history);
   pca.setNavigationClient(navigationClient);
-  console.log({ pca })
+
+//  const { isBadgeLoading } = useGetBadgeCountsQuery({ method: 'countQueues', db: 'Inventory', collection: '', find: { "_id": 0 }},{pollingInterval: process.env.REACT_APP_DBPOLLTIME } )
+  const { isProfileLoading } = useGetFromDBQuery({ method: 'find', db: 'Inventory', collection: 'Profile', find: { "_id": 0 } })
+  const { isCategoryLoading } = useGetFromDBQuery({ method: 'find', db: 'Inventory', collection: '_Categories', find: { "_id": 0 } })
+
   const [orgProfile, setOrgProfile] = useState()
   const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
@@ -38,7 +43,7 @@ function App({ pca }) {
   return (
     <MsalProvider instance={pca}>
       <ProfileContextProvider orgProfile={orgProfile}>
-        {loading ? <CircularProgress /> :
+        {(loading || isProfileLoading || isCategoryLoading) ? <CircularProgress /> :
           <div>
             <NavBar orgProfile={orgProfile} instance={pca}></NavBar>
             <MainBody>
