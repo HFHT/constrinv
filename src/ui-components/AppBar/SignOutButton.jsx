@@ -1,20 +1,21 @@
 import { useState, useContext } from "react";
 import { useMsal } from "@azure/msal-react";
-import { Avatar, MenuItem, Menu } from "@mui/material";
-import { SignOutWrapper, SignOutButtonWrapper } from "../../styles/signinStyles";
+import { Avatar, MenuItem, Menu, IconButton } from "@mui/material";
 import { ProfileContext } from "../../context/ProfileContext";
+import { SignOutWrapper } from '../../styles/signinStyles'
 
 export const SignOutButton = () => {
     const { instance } = useMsal();
     const profileContext = useContext(ProfileContext)
     const { graphData, setGraphData } = profileContext
 
-    const [anchorEl, setAnchorEl] = useState(null);
+    const [myanchorEl, setmyAnchorEl] = useState(null);
 
-    const open = Boolean(anchorEl);
+    const open = Boolean(myanchorEl);
 
-    const handleLogout = (logoutType) => {
-        setAnchorEl(null);
+    const handleLogout = () => {
+        console.log('logout')
+        setmyAnchorEl(null);
         setGraphData(null)
         instance.logoutRedirect();
 
@@ -22,31 +23,33 @@ export const SignOutButton = () => {
 
     return (
         <SignOutWrapper>
-            <SignOutButtonWrapper
-                onClick={(event) => setAnchorEl(event.currentTarget)}
+            <IconButton
+                onClick={(event) => setmyAnchorEl(event.currentTarget)}
                 color="inherit"
             >
                 {graphData &&
                     <Avatar alt={graphData.displayName} src={graphData.photo} />
                 }
-            </SignOutButtonWrapper>
-            <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                }}
-                open={open}
-                onClose={() => setAnchorEl(null)}
-            >
-                <MenuItem onClick={() => handleLogout("popup")} key="logoutPopup">Sign out...</MenuItem>
-            </Menu>
+            </IconButton>
+            {open &&
+                <Menu
+                    id="menu-appbar"
+                    anchorEl={myanchorEl}
+                    anchorOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                    }}
+                    open={open}
+                    onClose={() => setmyAnchorEl(null)}
+                >
+                    <MenuItem onClick={() => handleLogout()} key="logoutRedirect">Sign out...</MenuItem>
+                </Menu>
+            }
         </SignOutWrapper>
     )
 };

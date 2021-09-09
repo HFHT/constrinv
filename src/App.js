@@ -17,6 +17,7 @@ import { PageRoutes } from "./ui-components/PageRoutes";
 // Class-based equivalents of "Profile" component
 
 import NavBar from "./ui-components/AppBar/NavBar";
+import Footer from './ui-components/Footer'
 import MainBody from "./ui-components/MainBody";
 import { MongoAPI } from './utils/MongoDBAPI';
 
@@ -45,15 +46,16 @@ function App({ pca }) {
         {loading ? <CircularProgress /> :
 
           <div>
-            <NavBar orgProfile={orgProfile} instance={pca}></NavBar>
-            <MainBody>
-              <AuthenticatedTemplate>
-                <PageRoutes orgProfile={orgProfile}></PageRoutes>
-              </AuthenticatedTemplate>
-              <UnauthenticatedTemplate>
-                <p>Must sign in!!!</p>
-              </UnauthenticatedTemplate>
-            </MainBody>
+              <NavBar orgProfile={orgProfile} instance={pca}></NavBar>
+              <MainBody>
+                <AuthenticatedTemplate>
+                  <PageRoutes orgProfile={orgProfile}></PageRoutes>
+                </AuthenticatedTemplate>
+                <UnauthenticatedTemplate>
+                  <p>Must sign in!!!</p>
+                </UnauthenticatedTemplate>
+              </MainBody>
+
           </div>
 
         }

@@ -3,18 +3,18 @@ import { styled } from '@mui/material/styles';
 import { MenuItem, Box } from '@mui/material';
 
 export const QueuesBox = styled(Box)(({ theme }) => ({
-    order: 5,
+//    order: 5,
     [theme.breakpoints.down('multiLine')]: {
-        order: 2
+//        order: 2
     },
 }));
 
 export const QueuesItem = styled(MenuItem)(({ theme }) => ({
     [theme.breakpoints.down('multiLine')]: {
-        paddingLeft: '4px',
-        paddingRight: '4px'
+//        paddingLeft: '4px',
+//        paddingRight: '4px'
     },
-    [theme.breakpoints.down('smallLogo')]: {
+    [theme.breakpoints.down('smallBadge')]: {
         paddingLeft: '0px',
         paddingRight: '0px'
     },

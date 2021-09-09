@@ -1,16 +1,37 @@
 import React, { useContext, useState } from 'react';
-import { useMediaQuery, useTheme, ListItem } from '@mui/material';
+import { useMediaQuery, useTheme, ListItem, Drawer, List, ListItemText, ListItemIcon } from '@mui/material';
 import { ProfileContext } from '../../context/ProfileContext'
 import NavIconArray from '../../assets/navIcons'
 import { setNavOpen } from '../../features/navigation/navigationSlice'
 import { NavCatToolBar, NavCatMenuItem, NavCatMenuListItem, StyleCatPopover, StyleCatList, StyleCatListItemText } from '../../styles/invCatNavStyles'
 import { useSelector, useDispatch } from 'react-redux'
+import { makeStyles } from '@mui/styles';
 
-export const InvCatNavBar = (props) => {
-    const classes = {}
+const useStyles = makeStyles((theme) => ({
+    icon: {
+        width: '40px'
+    },
+    menuItem: {
+
+    },
+    li: {
+        padding: '0 0 3px 0',
+    },
+    drawer: {
+        width: '44px !important',
+        backgroundColor: '#000',
+        paddingLeft: '4px',
+        top: 'unset',
+        marginTop: '-8px'
+
+    }
+}))
+
+export const InvCatNavDrawer = (props) => {
+    const classes = useStyles()
+
     const theme = useTheme()
-//    const matches = useMediaQuery(theme.breakpoints.down('multiLine'))
-    const matches = false
+    const matches = useMediaQuery(theme.breakpoints.down('multiLine'))
     const profileContext = useContext(ProfileContext)
     const { orgProfile } = profileContext
 
@@ -35,7 +56,7 @@ export const InvCatNavBar = (props) => {
         //    setNavOpen(!navOpen)
         dispatch(setNavOpen(true))
         setelAnchor(event.currentTarget)
-    }   
+    }
     const handleSubClose = () => {
         console.debug('MenuCat close')
         dispatch(setNavOpen(false));
@@ -51,28 +72,26 @@ export const InvCatNavBar = (props) => {
     const id = navOpen ? 'simple-popover' : undefined;
     return (
         <div>
-            <NavCatToolBar variant="dense" disableGutters={matches} className={classes.toolbar}>
-                {orgProfile.categories.invCat.map(listitem => (
-                    <div id={"Sub" + listitem.id} key={listitem.id}>
-                        <NavCatMenuItem key={listitem.id} classes={classes.menuItem} disableGutters={false} onClick={(e) => handleMenuClick(listitem, e)} onMouseEnter={(e) => handleOpen(listitem.catSub, e)} onMouseLeave={(e) => handleClose(e)}>
-                            <img src={NavIconArray[listitem.id]} alt="" className={classes.icon} />
-                            <NavCatMenuListItem>
-                                {listitem.catName}
-                                {console.debug('aaa')}
-                            </NavCatMenuListItem>
-                        </NavCatMenuItem>
-                    </div>
-                ))}
-            </NavCatToolBar>
+            <Drawer variant="permanent" PaperProps={{ className: classes.drawer}}>
+                <List>
+                    {orgProfile.categories.invCat.map(listitem => (
+                        <ListItem key={listitem.id} className={classes.li} onClick={(e) => handleMenuClick(listitem, e)} onMouseEnter={(e) => handleOpen(listitem.catSub, e)} onMouseLeave={(e) => handleClose(e)}>
+                            <ListItemIcon >
+                                <img src={NavIconArray[listitem.id]} alt="" className={classes.icon} />
+                            </ListItemIcon>
+                        </ListItem>
+                    ))}
+                </List>
+            </Drawer>
             <StyleCatPopover id={id} open={navOpen
             } anchorEl={elAnchor} onClose={handleSubClose} onMouseLeave={handleSubClose}
                 anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'center',
+                    vertical: 'top',
+                    horizontal: 'right',
                 }}
                 transformOrigin={{
                     vertical: 'top',
-                    horizontal: 'center',
+                    horizontal: '100px',
                 }}
             >
                 <StyleCatList onMouseLeave={(e) => handleSubLeave(e)}>

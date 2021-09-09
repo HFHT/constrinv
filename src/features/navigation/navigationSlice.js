@@ -4,8 +4,6 @@ const initialState = {
   mainCat: null,
   subCat: null,
   filter: null,
-  navItems: [],
-  elAnchor: {},
   navOpen: false   
 }
 
@@ -26,19 +24,13 @@ export const navigationSlice = createSlice({
     setFilter: (state, action) => {
       state.filter = action.payload
     },
-    setNavItems: (state, action) => {
-      state.navItems = action.payload
-    },
     setNavOpen: (state, action) => {
       state.navOpen = action.payload
-    },
-    setelAnchor: (state, action) => {
-      state.elAnchor = action.payload
     }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setMainCat, setSubCat, setFilter, setNavItems, setNavOpen, setelAnchor } = navigationSlice.actions
+export const { setMainCat, setSubCat, setFilter, setNavOpen } = navigationSlice.actions
 
 export default navigationSlice.reducer

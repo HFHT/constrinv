@@ -10,14 +10,14 @@ export const NavCatMenuItem = styled(MenuItem)(({ theme }) => ({
     img: {
         width: '0px',
         [theme.breakpoints.down('multiLine')]: {
-            width: '40px',
+//            width: '40px',
         }
     }
 }));
 
 export const NavCatMenuListItem = styled('div')(({ theme }) => ({
     [theme.breakpoints.down('multiLine')]: {
-        fontSize: 0
+//        fontSize: 0
     },
     zIndex: 4,
     '&:hover': {
@@ -26,7 +26,7 @@ export const NavCatMenuListItem = styled('div')(({ theme }) => ({
 }));
 
 export const StyleCatPopover = styled(Popover)(({ theme }) => ({
-    display: 'flex',
+//    display: 'flex',
     zIndex: 'auto'
 }));
 

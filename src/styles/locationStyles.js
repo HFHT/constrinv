@@ -4,12 +4,12 @@ import { Popover, List } from '@mui/material';
 
 export const LocationsWrapper = styled('div')(({ theme }) => ({
     display: 'flex',
-    order: 4
+//    order: 4
 }));
 
 export const LocationWrapper = styled('div')(({ theme }) => ({
     display: 'flex',
-    order: 4
+//    order: 4
 }));
 
 export const LocationPopover = styled(Popover)(({ theme }) => ({
@@ -17,8 +17,8 @@ export const LocationPopover = styled(Popover)(({ theme }) => ({
 }));
 
 export const LocationList = styled(List)(({ theme }) => ({
-    paddingTop: 0,
-    paddingBottom: 0,
+    paddingTop: '0 !important',
+    paddingBottom: '0 !important',
     borderRight: 'gray !important',
     borderWidth: 'thin  !important',
     borderRightStyle: 'solid  !important'
