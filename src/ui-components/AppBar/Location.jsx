@@ -13,9 +13,7 @@ const Location = (props) => {
     const [cookies, setCookie, removeCookie] = useCookies(["locName"]);
     const dispatch = useDispatch()
     const { locName, shipName } = useSelector((state) => state.locations)
-
-    var locations = props.orgProfile.profile.Locations
-    console.debug(locations)
+    const locations = props.orgProfile.Locations
 
     const handleMenuClick = (e) => {
         console.debug(e.currentTarget)

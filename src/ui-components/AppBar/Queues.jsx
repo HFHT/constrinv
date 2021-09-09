@@ -2,6 +2,8 @@ import { withRouter } from 'react-router-dom'
 import { IconButton, Badge } from '@mui/material';
 import { ShoppingCart, Print, LocalShipping, PostAdd } from '@mui/icons-material';
 // Context and Redux imports
+import { useDispatch } from 'react-redux'
+import { setAllBadges } from '../../features/badges/badgesSlice'
 import { useGetBadgeCountsQuery } from '../../services/rtkquery/MongoDB'
 // Theme and Style imports
 import { QueuesBox, QueuesItem, BadgeWrapper } from "../../styles/queuesStyles";
@@ -13,7 +15,8 @@ const Queues = (props) => {
         history.push(pageURL)
     }
     const {data, isLoading} = useGetBadgeCountsQuery({ method: 'countQueues', db: 'Inventory', collection: '', find: { "_id": 0 }},{pollingInterval: process.env.REACT_APP_DBPOLLTIME } )
-
+    const dispatch = useDispatch()
+    if (!isLoading) {dispatch(setAllBadges(data))}
     return (
         <QueuesBox display="flex" flexDirection="row" justifyContent="inherit" padding={0} style={{ marginLeft: 'auto' }}>
             <QueuesItem onClick={() => handleMenuClick('/printQR')} disableGutters={disableGutters}>

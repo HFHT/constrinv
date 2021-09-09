@@ -29,13 +29,13 @@ export const badgesSlice = createSlice({
         setPallet: (state, action) => {
             state.queues.QueuePallet = action.payload
         },
-        setAll: (state, action) => {
+        setAllBadges: (state, action) => {
             state.queues = action.payload
         }
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { setBarCode, setOrder, setShipment, setPallet, setAll } = badgesSlice.actions
+export const { setBarCode, setOrder, setShipment, setPallet, setAllBadges } = badgesSlice.actions
 
 export default badgesSlice.reducer
