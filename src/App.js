@@ -1,24 +1,19 @@
 import React, { useState, useEffect } from 'react';
-
 import { useHistory } from "react-router-dom";
 import { CircularProgress } from '@mui/material';
-
 // MSAL imports
 import { MsalProvider, AuthenticatedTemplate, UnauthenticatedTemplate, } from "@azure/msal-react";
 import { CustomNavigationClient } from "./utils/NavigationClient";
-
+// Context and Redux imports
 import { ProfileContextProvider } from "./context/ProfileContext";
 import { useDispatch } from 'react-redux'
 import { setAll } from './features/badges/badgesSlice'
-
-// Sample app imports
+// Component imports
 import { PageRoutes } from "./ui-components/PageRoutes";
-
-// Class-based equivalents of "Profile" component
-
 import NavBar from "./ui-components/AppBar/NavBar";
 import Footer from './ui-components/Footer'
 import MainBody from "./ui-components/MainBody";
+// Function imports
 import { MongoAPI } from './utils/MongoDBAPI';
 
 function App({ pca }) {
@@ -44,20 +39,18 @@ function App({ pca }) {
     <MsalProvider instance={pca}>
       <ProfileContextProvider orgProfile={orgProfile}>
         {loading ? <CircularProgress /> :
-
           <div>
-              <NavBar orgProfile={orgProfile} instance={pca}></NavBar>
-              <MainBody>
-                <AuthenticatedTemplate>
-                  <PageRoutes orgProfile={orgProfile}></PageRoutes>
-                </AuthenticatedTemplate>
-                <UnauthenticatedTemplate>
-                  <p>Must sign in!!!</p>
-                </UnauthenticatedTemplate>
-              </MainBody>
-
+            <NavBar orgProfile={orgProfile} instance={pca}></NavBar>
+            <MainBody>
+              <AuthenticatedTemplate>
+                <PageRoutes orgProfile={orgProfile}></PageRoutes>
+              </AuthenticatedTemplate>
+              <UnauthenticatedTemplate>
+                <p>Must sign in!!!</p>
+              </UnauthenticatedTemplate>
+            </MainBody>
+            <Footer />
           </div>
-
         }
       </ProfileContextProvider>
     </MsalProvider>

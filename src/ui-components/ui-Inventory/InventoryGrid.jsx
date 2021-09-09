@@ -1,11 +1,14 @@
 
 import { Grid, Fab } from '@mui/material';
 import { Add as AddIcon } from '@mui/icons-material';
+// Context and Redux imports
 import { useSelector } from 'react-redux'
-import CardInventory from './CardInventory'
-import { } from '../../styles/appStyles'
-import { InventoryItems } from '../../scaffold/InventoryStructure'
+// Theme and Style imports
 import { invGridStyles } from '../../styles/inventoryCardStyles'
+import { } from '../../styles/appStyles'
+// Component imports
+import CardInventory from './CardInventory'
+import { InventoryItems } from '../../scaffold/InventoryStructure'
 
 export const InventoryGrid = () => {
     const classes = invGridStyles()
@@ -22,8 +25,7 @@ export const InventoryGrid = () => {
           <Grid container spacing={1} justifyContent="flex-start" alignItems="flex-start" className={classes.grid}>
             {inventoryObj.invItems.map(listitem => (
               <CardInventory key={listitem.id} listItem={listitem}  />
-            ))
-            }
+            ))}
            <div className={classes.fab}>
           <Fab size="small" color="secondary" aria-label="add" className={classes.fab} onClick={() => handleInvEditClick('')}>
           <AddIcon />

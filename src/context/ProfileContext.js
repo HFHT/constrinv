@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect } from "react";
 import { useIsAuthenticated, useMsal } from "@azure/msal-react";
 import { InteractionStatus, InteractionRequiredAuthError } from "@azure/msal-browser";
 import { callMsGraph } from "../utils/MsGraphApiCall";
-import { loginRequest } from "../authConfig";
+import { loginRequest } from "../utils/authConfig";
 import { MongoAPI } from '../utils/MongoDBAPI';
 import { CurrentDate } from '../utils/CurrentDate'
 

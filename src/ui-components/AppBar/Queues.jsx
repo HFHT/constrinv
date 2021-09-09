@@ -1,8 +1,10 @@
+import { withRouter } from 'react-router-dom'
 import { IconButton, Badge } from '@mui/material';
 import { ShoppingCart, Print, LocalShipping, PostAdd } from '@mui/icons-material';
-import { withRouter } from 'react-router-dom'
-import { QueuesBox, QueuesItem, BadgeWrapper } from "../../styles/queuesStyles";
+// Context and Redux imports
 import { useSelector } from 'react-redux'
+// Theme and Style imports
+import { QueuesBox, QueuesItem, BadgeWrapper } from "../../styles/queuesStyles";
 
 const Queues = (props) => {
     const { history, disableGutters } = props;

@@ -1,24 +1,23 @@
 import { useState, useContext } from "react";
-import { useMsal } from "@azure/msal-react";
 import { Avatar, MenuItem, Menu, IconButton } from "@mui/material";
+// MSAL imports
+import { useMsal } from "@azure/msal-react";
+// Context and Redux imports
 import { ProfileContext } from "../../context/ProfileContext";
+// Theme and Style imports
 import { SignOutWrapper } from '../../styles/signinStyles'
 
 export const SignOutButton = () => {
     const { instance } = useMsal();
     const profileContext = useContext(ProfileContext)
     const { graphData, setGraphData } = profileContext
-
     const [myanchorEl, setmyAnchorEl] = useState(null);
-
     const open = Boolean(myanchorEl);
-
     const handleLogout = () => {
         console.log('logout')
         setmyAnchorEl(null);
         setGraphData(null)
         instance.logoutRedirect();
-
     }
 
     return (

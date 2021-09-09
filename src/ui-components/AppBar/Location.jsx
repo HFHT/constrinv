@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { List, ListItem, ListItemText } from '@mui/material';
 import { useCookies } from "react-cookie";
+import { List, ListItem, ListItemText } from '@mui/material';
+// Context and Redux imports
 import { useSelector, useDispatch } from 'react-redux'
+// Theme and Style imports
 import { setLocName, setShipName } from '../../features/locations/locationsSlice'
 import { LocationList, LocationPopover } from "../../styles/locationStyles";
 

@@ -1,4 +1,4 @@
-import { loginRequest, graphConfig } from "../authConfig";
+import { loginRequest, graphConfig } from "./authConfig";
 import { msalInstance } from "../index";
 
 export async function callMsGraph() {

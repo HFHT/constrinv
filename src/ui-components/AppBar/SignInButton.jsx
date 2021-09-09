@@ -2,7 +2,7 @@
 import { useMsal } from "@azure/msal-react";
 import { Button, useMediaQuery, useTheme, Avatar } from "@mui/material";
 
-import { loginRequest } from "../../authConfig";
+import { loginRequest } from "../../utils/authConfig";
 
 export const SignInButton = () => {
     const theme = useTheme()

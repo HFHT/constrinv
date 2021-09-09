@@ -1,28 +1,26 @@
-// If you need to support IE11 uncomment the imports below
-//import "react-app-polyfill/ie11";
-//import "core-js/stable"; 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './styles/index.css';
 import { BrowserRouter as Router } from "react-router-dom";
+// Theme imports
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from "./styles/theme";
-import App from './App';
-import { store } from './store'
+import './styles/index.css';
+// Redux imports
 import { Provider } from 'react-redux'
-
+import { store } from './store'
+// Component imports
+import App from './App';
 // MSAL imports
 import { PublicClientApplication, EventType } from "@azure/msal-browser";
-import { msalConfig } from "./authConfig";
+import { msalConfig } from "./utils/authConfig";
 require('dotenv').config()
 export const msalInstance = new PublicClientApplication(msalConfig);
 
-// Account selection logic is app dependent. Adjust as needed for different use cases.
+// Account selection
 const accounts = msalInstance.getAllAccounts();
 if (accounts.length > 0) {
   msalInstance.setActiveAccount(accounts[0]);
 }
-
 msalInstance.addEventCallback((event) => {
   if (event.eventType === EventType.LOGIN_SUCCESS && event.payload.account) {
     const account = event.payload.account;
