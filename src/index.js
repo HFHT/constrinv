@@ -12,7 +12,7 @@ import { store } from './store'
 import App from './App';
 // MSAL imports
 import { PublicClientApplication, EventType } from "@azure/msal-browser";
-import { msalConfig } from "./utils/authConfig";
+import { msalConfig } from "./services/authConfig";
 require('dotenv').config()
 export const msalInstance = new PublicClientApplication(msalConfig);
 

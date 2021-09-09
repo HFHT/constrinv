@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { CircularProgress } from '@mui/material';
 // MSAL imports
 import { MsalProvider, AuthenticatedTemplate, UnauthenticatedTemplate, } from "@azure/msal-react";
-import { CustomNavigationClient } from "./utils/NavigationClient";
+import { CustomNavigationClient } from "./services/NavigationClient";
 // Context and Redux imports
 import { ProfileContextProvider } from "./context/ProfileContext";
 import { useDispatch } from 'react-redux'
@@ -14,7 +14,7 @@ import NavBar from "./ui-components/AppBar/NavBar";
 import Footer from './ui-components/Footer'
 import MainBody from "./ui-components/MainBody";
 // Function imports
-import { MongoAPI } from './utils/MongoDBAPI';
+import { MongoAPI } from './services/MongoDBAPI';
 
 function App({ pca }) {
   // The next 3 lines are optional. This is how you configure MSAL to take advantage of the router's navigate functions when MSAL redirects between pages in your app

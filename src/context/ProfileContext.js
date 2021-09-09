@@ -1,10 +1,10 @@
 import React, { createContext, useState, useEffect } from "react";
 import { useIsAuthenticated, useMsal } from "@azure/msal-react";
 import { InteractionStatus, InteractionRequiredAuthError } from "@azure/msal-browser";
-import { callMsGraph } from "../utils/MsGraphApiCall";
-import { loginRequest } from "../utils/authConfig";
-import { MongoAPI } from '../utils/MongoDBAPI';
-import { CurrentDate } from '../utils/CurrentDate'
+import { callMsGraph } from "../services/MsGraphApiCall";
+import { loginRequest } from "../services/authConfig";
+import { MongoAPI } from '../services/MongoDBAPI';
+import { CurrentDate } from '../services/CurrentDate'
 
 export const ProfileContext = createContext()
 

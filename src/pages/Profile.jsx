@@ -9,7 +9,7 @@ import { loginRequest } from "../authConfig";
 import { ProfileData } from "../ui-components/ProfileData";
 import { Loading } from "../ui-components/Loading";
 import { ErrorComponent } from "../ui-components/ErrorComponent";
-import { callMsGraph } from "../utils/MsGraphApiCall";
+import { callMsGraph } from "../services/MsGraphApiCall";
 
 // Material-ui imports
 import { Paper } from "@mui/material";
