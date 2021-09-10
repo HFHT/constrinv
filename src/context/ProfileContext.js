@@ -15,7 +15,7 @@ export const ProfileContextProvider = props => {
 
     const { instance, inProgress } = useMsal();
     const isAuthenticated = useIsAuthenticated();
-
+/*
     useEffect(() => {
         async function GetMsGraph() {
             await callMsGraph()
@@ -40,7 +40,7 @@ export const ProfileContextProvider = props => {
             }
         }
     }, [props.orgProfile, inProgress, graphData, instance, isAuthenticated]);
-
+*/
     const profileContext = {
         instance,
         inProgress,

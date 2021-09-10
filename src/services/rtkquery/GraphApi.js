@@ -8,6 +8,7 @@ export const graphApi = createApi({
         baseUrl: `${process.env.REACT_APP_GRAPH_ENDPOINT}`,
         prepareHeaders(headers, { getState }) {
             const authToken = getState().user.authToken
+            console.debug('authToken:',authToken)
             if (authToken) {
                 headers.set('Authorization', `Bearer ${authToken}`)
             }
@@ -20,6 +21,11 @@ export const graphApi = createApi({
         }),
         graphMePhoto: builder.query({
             query: () => '/me/photos/48x48/$value',
+            transformResponse: (response) => {
+                console.log('photo:',response)
+                window.URL = window.URL || window.webkitURL
+                window.URL.createObjectURL(response)
+            }
         })
     }),
 })

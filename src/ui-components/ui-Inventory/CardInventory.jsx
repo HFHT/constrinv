@@ -5,18 +5,18 @@ import { cardStyles } from '../../styles/inventoryCardStyles'
 
 const CardInventory = (props) => {
     useEffect(() => {
-        console.debug(props.listItem.id)
+//        console.debug(props.listItem.id)
       }, []);
     const classes = cardStyles()
-    console.debug(classes)
+//    console.debug(classes)
     const handleInvEditClick = (props) => {
-        console.log(props)
+//        console.log(props)
     } 
     const handleAddPalletClick = (props) => {
-        console.log(props)
+//        console.log(props)
     }    
     const handleAddShipClick = (props) => {
-        console.log(props)
+//        console.log(props)
     } 
 
     return (

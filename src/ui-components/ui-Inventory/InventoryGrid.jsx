@@ -14,7 +14,7 @@ export const InventoryGrid = () => {
     const classes = invGridStyles()
     const inventoryObj = InventoryItems
     const { locName } = useSelector((state) => state.navigation)     
-    console.debug(locName)
+//    console.debug(locName)
     const handleInvEditClick = (props) => {
       console.log(props)
     } 
