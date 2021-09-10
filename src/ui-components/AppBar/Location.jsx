@@ -3,8 +3,8 @@ import { useCookies } from "react-cookie";
 import { List, ListItem, ListItemText } from '@mui/material';
 // Context and Redux imports
 import { useSelector, useDispatch } from 'react-redux'
-// Theme and Style imports
 import { setLocName, setShipName } from '../../features/locations/locationsSlice'
+// Theme and Style imports
 import { LocationList, LocationPopover } from "../../styles/locationStyles";
 
 const Location = (props) => {

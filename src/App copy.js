@@ -10,7 +10,6 @@ import { PageRoutes } from "./ui-components/PageRoutes";
 import NavBar from "./ui-components/AppBar/NavBar";
 import Footer from './ui-components/Footer'
 import MainBody from "./ui-components/MainBody";
-import UserProvider from './ui-components/UserProvider'
 // Function imports
 import { useGetOrgProfileQuery } from './services/rtkquery/MongoDB'
 
@@ -24,7 +23,6 @@ function App({ pca }) {
 
   return (
     <MsalProvider instance={pca}>
-      <UserProvider instance={pca}> 
       <ProfileContextProvider orgProfile={!isLoading ? data[0] : {}}>
         {(isLoading && !error ) ? <CircularProgress /> :
           <div>
@@ -41,7 +39,6 @@ function App({ pca }) {
           </div>
         }
       </ProfileContextProvider>
-      </UserProvider>
     </MsalProvider>
   );
 }

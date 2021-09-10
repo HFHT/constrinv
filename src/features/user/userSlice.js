@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  user: null
+  user: null,
+  authToken: null
 }
 
 export const userSlice = createSlice({
@@ -14,11 +15,14 @@ export const userSlice = createSlice({
       // which detects changes to a "draft state" and produces a brand new
       // immutable state based off those changes
       state.user = action.payload
-    }
+    },
+    setAuthToken: (state, action) => {
+      state.authToken = action.payload
+    },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setUser } = userSlice.actions
+export const { setUser, setAuthToken } = userSlice.actions
 
 export default userSlice.reducer
