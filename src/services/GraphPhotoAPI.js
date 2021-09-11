@@ -1,10 +1,6 @@
-import { useSelector, useDispatch } from 'react-redux'
 import { graphConfig } from "./authConfig";
-import { setAuthToken, setUser, setSkip, setProfilePicture } from '../features/user/userSlice'
 
-export async function GraphPhotoAPI() {
-    const { skip, authToken } = useSelector((state) => state.user)
-    const dispatch = useDispatch()
+export async function GraphPhotoAPI(skip, authToken) {
     var photo = null
     if (!skip) {
         const headers = new Headers();
@@ -14,10 +10,8 @@ export async function GraphPhotoAPI() {
             method: "GET",
             headers: headers
         };
-        fetch(graphConfig.graphMePhoto, options).then(response => response.blob())
-            .then((photoBlob) => {
-                return photoBlob;
-            })
+        await fetch(graphConfig.graphMePhoto, options)
+            .then(response => response.blob())
             .then((photoBlob => {
                 window.URL = window.URL || window.webkitURL;
                 photo = window.URL.createObjectURL(photoBlob);
@@ -27,7 +21,7 @@ export async function GraphPhotoAPI() {
                 throw error;
             })
             .finally(() => {
-                console.log('APIphoto', photo)
+                console.log('APIphoto returned')
                 return photo;
             });
     }

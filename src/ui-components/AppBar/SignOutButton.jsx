@@ -11,7 +11,7 @@ import { SignOutWrapper } from '../../styles/signinStyles'
 export const SignOutButton = () => {
     const { instance } = useMsal();
     const dispatch = useDispatch()
-    const { user } = useSelector((state) => state.user)    
+    const { user, profilePicture } = useSelector((state) => state.user)    
     const [myanchorEl, setmyAnchorEl] = useState(null);
     const open = Boolean(myanchorEl);
     const handleLogout = () => {
@@ -30,7 +30,7 @@ export const SignOutButton = () => {
                 color="inherit"
             >
                 {user &&
-                    <Avatar alt={user.displayName} /*src={graphData.photo}*/ />
+                    <Avatar alt={user.displayName} src={profilePicture} />
                 }
             </IconButton>
             {open &&
