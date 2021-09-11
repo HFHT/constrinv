@@ -1,18 +1,15 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { Avatar, MenuItem, Menu, IconButton } from "@mui/material";
 // MSAL imports
 import { useMsal } from "@azure/msal-react";
 // Context and Redux imports
-import { ProfileContext } from "../../context/ProfileContext";
 import { useSelector, useDispatch } from 'react-redux'
-import { setAuthToken, setUser } from '../../features/user/userSlice'
+import { setAuthToken, setUser, setSkip } from '../../features/user/userSlice'
 // Theme and Style imports
 import { SignOutWrapper } from '../../styles/signinStyles'
 
 export const SignOutButton = () => {
     const { instance } = useMsal();
-    const profileContext = useContext(ProfileContext)
-    const { graphData, setGraphData } = profileContext
     const dispatch = useDispatch()
     const { user } = useSelector((state) => state.user)    
     const [myanchorEl, setmyAnchorEl] = useState(null);
@@ -21,6 +18,8 @@ export const SignOutButton = () => {
         console.log('logout')
         setmyAnchorEl(null)
         dispatch(setUser(null))
+        dispatch(setAuthToken(null))
+        dispatch(setSkip(true))
         instance.logoutRedirect();
     }
 
@@ -30,7 +29,7 @@ export const SignOutButton = () => {
                 onClick={(event) => setmyAnchorEl(event.currentTarget)}
                 color="inherit"
             >
-                {graphData &&
+                {user &&
                     <Avatar alt={user.displayName} /*src={graphData.photo}*/ />
                 }
             </IconButton>

@@ -1,8 +1,7 @@
-import React, { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useMediaQuery, useTheme, ListItem, Drawer, List, ListItemIcon, CircularProgress } from '@mui/material';
 // Context and Redux imports
 import { useSelector, useDispatch } from 'react-redux'
-import { ProfileContext } from '../../context/ProfileContext'
 import { setNavOpen } from '../../features/navigation/navigationSlice'
 import { useGetNavigationQuery } from '../../services/rtkquery/MongoDB'
 // Theme and Style imports
@@ -13,9 +12,6 @@ import { NavCatToolBar, NavCatMenuItem, NavCatMenuListItem, StyleCatPopover, Sty
 const useStyles = makeStyles((theme) => ({
     icon: {
         width: '40px'
-    },
-    menuItem: {
-
     },
     li: {
         padding: '0 0 3px 0',
@@ -37,8 +33,6 @@ export const CardInvNavBar = (props) => {
     const useDrawer = useMediaQuery(theme.breakpoints.down('multiLine'))
     //    const matches = useMediaQuery(theme.breakpoints.down('multiLine'))
     const matches = false
-    const profileContext = useContext(ProfileContext)
-    const { orgProfile } = profileContext
     const { data, error, isLoading } = useGetNavigationQuery({ method: 'find', db: 'Inventory', collection: '_Categories', find: { "_id": 0 } })
     console.log(data, isLoading)
     const dispatch = useDispatch()
@@ -86,7 +80,7 @@ export const CardInvNavBar = (props) => {
                         <NavCatToolBar variant="dense" disableGutters={matches} className={classes.toolbar}>
                             {data[0].invCat.map(listitem => (
                                 <div id={"Sub" + listitem.id} key={listitem.id}>
-                                    <NavCatMenuItem key={listitem.id} classes={classes.menuItem} disableGutters={false} onClick={(e) => handleMenuClick(listitem, e)} onMouseEnter={(e) => handleOpen(listitem.catSub, e)} onMouseLeave={(e) => handleClose(e)}>
+                                    <NavCatMenuItem key={listitem.id} disableGutters={false} onClick={(e) => handleMenuClick(listitem, e)} onMouseEnter={(e) => handleOpen(listitem.catSub, e)} onMouseLeave={(e) => handleClose(e)}>
                                         <img src={NavIconArray[listitem.id]} alt="" className={classes.icon} />
                                         <NavCatMenuListItem>
                                             {listitem.catName}
@@ -123,7 +117,7 @@ export const CardInvNavBar = (props) => {
                     <div>
                         <Drawer variant="permanent" PaperProps={{ className: classes.drawer }}>
                             <List>
-                                {orgProfile.categories.invCat.map(listitem => (
+                                {data[0].invCat.map(listitem => (
                                     <ListItem key={listitem.id} className={classes.li} onClick={(e) => handleMenuClick(listitem, e)} onMouseEnter={(e) => handleOpen(listitem.catSub, e)} onMouseLeave={(e) => handleClose(e)}>
                                         <ListItemIcon >
                                             <img src={NavIconArray[listitem.id]} alt="" className={classes.icon} />

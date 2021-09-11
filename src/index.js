@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from "react-router-dom";
 // Theme imports
-import { ThemeProvider } from '@mui/material/styles';
-import { theme } from "./styles/theme";
 import './styles/index.css';
 // Redux imports
 import { Provider } from 'react-redux'
@@ -31,11 +29,9 @@ msalInstance.addEventCallback((event) => {
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <ThemeProvider theme={theme}>
         <Provider store={store}>
           <App pca={msalInstance} />
         </Provider>
-      </ThemeProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')

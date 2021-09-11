@@ -2,7 +2,9 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   user: null,
-  authToken: null
+  skip: true,
+  authToken: null,
+  profilePicture: null
 }
 
 export const userSlice = createSlice({
@@ -19,10 +21,16 @@ export const userSlice = createSlice({
     setAuthToken: (state, action) => {
       state.authToken = action.payload
     },
+    setProfilePicture: (state, action) => {
+      state.profilePicture = action.payload
+    },    
+    setSkip: (state, action) => {
+      state.skip = action.payload
+    },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setUser, setAuthToken } = userSlice.actions
+export const { setUser, setAuthToken, setSkip, setProfilePicture } = userSlice.actions
 
 export default userSlice.reducer

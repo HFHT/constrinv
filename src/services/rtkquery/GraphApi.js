@@ -21,11 +21,11 @@ export const graphApi = createApi({
         }),
         graphMePhoto: builder.query({
             query: () => '/me/photos/48x48/$value',
-            transformResponse: (response) => {
-                console.log('photo:',response)
-                window.URL = window.URL || window.webkitURL
-                window.URL.createObjectURL(response)
-            }
+//            transformResponse: (response) => {
+//                console.log('photo:',response)
+//                window.URL = window.URL || window.webkitURL
+//                window.URL.createObjectURL(response)
+//            }
         })
     }),
 })
