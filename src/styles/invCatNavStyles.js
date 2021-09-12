@@ -1,5 +1,24 @@
 import { styled } from '@mui/material/styles';
+import { makeStyles } from '@mui/styles'
 import { Toolbar, MenuItem, Popover, List, ListItemText } from '@mui/material';
+
+export const cardNavBarStyles = makeStyles((theme) => ({
+    icon: {
+        width: '40px'
+    },
+    li: {
+        padding: '0 0 3px 0',
+    },
+    drawer: {
+        width: '44px !important',
+/*        backgroundColor: '#000',*/
+        paddingLeft: '4px',
+        top: 'unset',
+        marginTop: '-8px'
+
+    }
+}))
+
 
 export const NavCatToolBar = styled(Toolbar)(({ theme }) => ({
     minHeight: 36,

@@ -2,7 +2,7 @@ import { makeStyles } from '@mui/styles'
 
 export const cardStyles = makeStyles((theme) => ({
     card: {
-        height: 470,
+        //height: 470,
     },
     media: {
         width: 220,

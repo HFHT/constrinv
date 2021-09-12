@@ -2,59 +2,45 @@ import { useState } from 'react';
 import { useMediaQuery, useTheme, ListItem, Drawer, List, ListItemIcon, CircularProgress } from '@mui/material';
 // Context and Redux imports
 import { useSelector, useDispatch } from 'react-redux'
-import { setNavOpen } from '../../features/navigation/navigationSlice'
+import { setNavOpen, setMainCat, setSubCat } from '../../features/navigation/navigationSlice'
 import { useGetNavigationQuery } from '../../services/rtkquery/MongoDB'
 // Theme and Style imports
-import { makeStyles } from '@mui/styles';
 import NavIconArray from '../../assets/navIcons'
-import { NavCatToolBar, NavCatMenuItem, NavCatMenuListItem, StyleCatPopover, StyleCatList, StyleCatListItemText } from '../../styles/invCatNavStyles'
-
-const useStyles = makeStyles((theme) => ({
-    icon: {
-        width: '40px'
-    },
-    li: {
-        padding: '0 0 3px 0',
-    },
-    drawer: {
-        width: '44px !important',
-        backgroundColor: '#000',
-        paddingLeft: '4px',
-        top: 'unset',
-        marginTop: '-8px'
-
-    }
-}))
+import { NavCatToolBar, NavCatMenuItem, NavCatMenuListItem, StyleCatPopover, StyleCatList, StyleCatListItemText, cardNavBarStyles } from '../../styles/invCatNavStyles'
 
 export const CardInvNavBar = (props) => {
-    const classes = useStyles()
+    const classes = cardNavBarStyles()
 
     const theme = useTheme()
     const useDrawer = useMediaQuery(theme.breakpoints.down('multiLine'))
     //    const matches = useMediaQuery(theme.breakpoints.down('multiLine'))
     const matches = false
-    const { data, error, isLoading } = useGetNavigationQuery({ method: 'find', db: 'Inventory', collection: '_Categories', find: { "_id": 0 } })
+    const { data, isLoading } = useGetNavigationQuery({ method: 'find', db: 'Inventory', collection: '_Categories', find: { "_id": 0 } })
     console.log(data, isLoading)
     const dispatch = useDispatch()
-    const { navOpen } = useSelector((state) => state.navigation)
+    const { navOpen, mainCat, subCat } = useSelector((state) => state.navigation)
     const [elAnchor, setelAnchor] = useState(null)
     const [navItems, setNavItems] = useState([])
+    const [localMainCat, setLocalMainCat] = useState(null)
     const handleClose = (e) => {
         console.log('SubMenu close')
         //setNavOpen(false)
     }
-    const handleOpen = (props, event) => {
-        setNavItems(props)
+    const handleOpen = (catName, catSub, event) => {
+        console.log('handleOpen:', catName, catSub)
+        setNavItems(catSub)
+        setLocalMainCat(catName)
         dispatch(setNavOpen(true))
-        console.log(event.currentTarget)
+
         setelAnchor(event.currentTarget)
     }
     const handleMenuClick = (props, event) => {
-        console.log(props.catName)
-        setNavItems(props.catSub)
+        console.log('handleMenuClick:', props.catName)
+        dispatch(setMainCat(props.catName))
+        dispatch(setSubCat(null))
         //    console.log(elAnchor)
         //    setNavOpen(!navOpen)
-        dispatch(setNavOpen(true))
+        dispatch(setNavOpen(false))
         setelAnchor(event.currentTarget)
     }
     const handleSubClose = () => {
@@ -65,9 +51,11 @@ export const CardInvNavBar = (props) => {
         console.debug('MenuCat leave')
         dispatch(setNavOpen(false));
     }
-    const handleSubClick = (props, e) => {
+    const handleSubClick = (catSub, e) => {
+        dispatch(setMainCat(localMainCat))
+        dispatch(setSubCat(catSub))
         dispatch(setNavOpen(false));
-        console.debug(props)
+        console.debug('handleSubClick:', catSub)
     }
     const id = navOpen ? 'simple-popover' : undefined;
     return (
@@ -80,7 +68,7 @@ export const CardInvNavBar = (props) => {
                         <NavCatToolBar variant="dense" disableGutters={matches} className={classes.toolbar}>
                             {data[0].invCat.map(listitem => (
                                 <div id={"Sub" + listitem.id} key={listitem.id}>
-                                    <NavCatMenuItem key={listitem.id} disableGutters={false} onClick={(e) => handleMenuClick(listitem, e)} onMouseEnter={(e) => handleOpen(listitem.catSub, e)} onMouseLeave={(e) => handleClose(e)}>
+                                    <NavCatMenuItem key={listitem.id} disableGutters={false} onClick={(e) => handleMenuClick(listitem, e)} onMouseEnter={(e) => handleOpen(listitem.catName, listitem.catSub, e)} onMouseLeave={(e) => handleClose(e)}>
                                         <img src={NavIconArray[listitem.id]} alt="" className={classes.icon} />
                                         <NavCatMenuListItem>
                                             {listitem.catName}
@@ -118,7 +106,7 @@ export const CardInvNavBar = (props) => {
                         <Drawer variant="permanent" PaperProps={{ className: classes.drawer }}>
                             <List>
                                 {data[0].invCat.map(listitem => (
-                                    <ListItem key={listitem.id} className={classes.li} onClick={(e) => handleMenuClick(listitem, e)} onMouseEnter={(e) => handleOpen(listitem.catSub, e)} onMouseLeave={(e) => handleClose(e)}>
+                                    <ListItem key={listitem.id} className={classes.li} onClick={(e) => handleMenuClick(listitem, e)} onMouseEnter={(e) => handleOpen(listitem.catName, listitem.catSub, e)} onMouseLeave={(e) => handleClose(e)}>
                                         <ListItemIcon >
                                             <img src={NavIconArray[listitem.id]} alt="" className={classes.icon} />
                                         </ListItemIcon>
@@ -131,10 +119,6 @@ export const CardInvNavBar = (props) => {
                             anchorOrigin={{
                                 vertical: 'top',
                                 horizontal: 'right',
-                            }}
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: '100px',
                             }}
                         >
                             <StyleCatList onMouseLeave={(e) => handleSubLeave(e)}>
