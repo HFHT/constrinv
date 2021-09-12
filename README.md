@@ -1,5 +1,5 @@
 # Construction Inventory
-
+Redux navOpen is now deprecated, can use local state to minimize rerenders
 ###### Tasks
 - [x] Refactor NavContext, I don't think we need NavCat anymore now that the navigation is in the OrgProfile 
 - [x] Resizing of the Top Navigation bar

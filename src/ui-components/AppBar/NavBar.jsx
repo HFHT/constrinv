@@ -29,7 +29,7 @@ const NavBar = (props) => {
         history.push(pageURL)
     }
     const handleLeave = (e) => {
-        dispatch(setNavOpen(false))
+//        dispatch(setNavOpen(false))
     }
     return (
         <div style={{ display: 'unset' }}>

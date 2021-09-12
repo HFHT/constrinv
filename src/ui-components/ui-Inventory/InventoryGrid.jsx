@@ -11,7 +11,7 @@ import InventoryCard from './InventoryCard'
 import { InventoryItems } from '../../scaffold/InventoryStructure'
 
 function applyFilter(filter, item) {
-  console.debug('applyFilter:', filter, item)
+//  console.debug('applyFilter:', filter, item)
   if (filter.catSub) {
     if ((filter.catSub === item.catSub) && (filter.catName === item.catName)) { return true }
   } else {

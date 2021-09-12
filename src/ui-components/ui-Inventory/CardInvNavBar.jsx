@@ -22,6 +22,7 @@ export const CardInvNavBar = (props) => {
     const [elAnchor, setelAnchor] = useState(null)
     const [navItems, setNavItems] = useState([])
     const [localMainCat, setLocalMainCat] = useState(null)
+    const [localNavOpen, setLocalNavOpen] = useState(false)
     const handleClose = (e) => {
         console.log('SubMenu close')
         //setNavOpen(false)
@@ -30,7 +31,8 @@ export const CardInvNavBar = (props) => {
         console.log('handleOpen:', catName, catSub)
         setNavItems(catSub)
         setLocalMainCat(catName)
-        dispatch(setNavOpen(true))
+        setLocalNavOpen(true)
+//        dispatch(setNavOpen(true))
 
         setelAnchor(event.currentTarget)
     }
@@ -40,26 +42,30 @@ export const CardInvNavBar = (props) => {
         dispatch(setSubCat(null))
         //    console.log(elAnchor)
         //    setNavOpen(!navOpen)
-        dispatch(setNavOpen(false))
+//        dispatch(setNavOpen(false))
+        setLocalNavOpen(false)
         setelAnchor(event.currentTarget)
     }
     const handleSubClose = () => {
         console.debug('MenuCat close')
-        dispatch(setNavOpen(false));
+        setLocalNavOpen(false)
+//        dispatch(setNavOpen(false));
     }
     const handleSubLeave = (e) => {
         console.debug('MenuCat leave')
-        dispatch(setNavOpen(false));
+        setLocalNavOpen(false)
+//        dispatch(setNavOpen(false));
     }
     const handleSubClick = (catSub, e) => {
         dispatch(setMainCat(localMainCat))
         dispatch(setSubCat(catSub))
-        dispatch(setNavOpen(false));
+        setLocalNavOpen(false)        
+//        dispatch(setNavOpen(false));
         console.debug('handleSubClick:', catSub)
     }
-    const id = navOpen ? 'simple-popover' : undefined;
+    const id = localNavOpen ? 'simple-popover' : undefined;
     return (
-        <div>
+        <div  onMouseLeave={handleSubClose}>
             {isLoading ?
                 <CircularProgress />
                 :
@@ -78,7 +84,7 @@ export const CardInvNavBar = (props) => {
                                 </div>
                             ))}
                         </NavCatToolBar>
-                        <StyleCatPopover id={id} open={navOpen
+                        <StyleCatPopover id={id} open={localNavOpen
                         } anchorEl={elAnchor} onClose={handleSubClose} onMouseLeave={handleSubClose}
                             anchorOrigin={{
                                 vertical: 'bottom',
@@ -114,7 +120,7 @@ export const CardInvNavBar = (props) => {
                                 ))}
                             </List>
                         </Drawer>
-                        <StyleCatPopover id={id} open={navOpen
+                        <StyleCatPopover id={id} open={localNavOpen
                         } anchorEl={elAnchor} onClose={handleSubClose} onMouseLeave={handleSubClose}
                             anchorOrigin={{
                                 vertical: 'top',
