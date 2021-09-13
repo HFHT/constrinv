@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 // Define a service using a base URL and expected endpoints
 export const mongoDBApi = createApi({
     reducerPath: 'mongoDBApi',
-    baseQuery: fetchBaseQuery({ baseUrl: `${process.env.REACT_APP_AZURE_FUNC_URL}` }),
+    baseQuery: fetchBaseQuery({ baseUrl: `https://hfhtapi.azurewebsites.net` }),
     endpoints: (builder) => ({
         getBadgeCounts: builder.query({
             query: (req) => `/api/HFHTMongoAPI?req=${JSON.stringify(req)}`,
