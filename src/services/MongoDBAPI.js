@@ -8,7 +8,7 @@ export async function MongoAPI( req ) {
         headers: headers
     };
     
-    return fetch(`https://hfhtapi.azurewebsites.net/api/HFHTMongoAPI?req=${JSON.stringify(req)}`, options)
+    return fetch(`${process.env.REACT_APP_AZURE_FUNC_URL}/api/HFHTMongoAPI?req=${JSON.stringify(req)}`, options)
         .then(response => {console.log(response); return response.json()})
         .catch(error => console.log(error));
 

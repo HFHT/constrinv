@@ -5,7 +5,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const graphApi = createApi({
     reducerPath: 'graphApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: `https://graph.microsoft.com/v1.0`,
+        baseUrl: `${process.env.REACT_APP_GRAPH_ENDPOINT}`,
         prepareHeaders(headers, { getState }) {
             const authToken = getState().user.authToken
             console.debug('authToken:',authToken)
