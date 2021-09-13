@@ -7,16 +7,16 @@ export const mongoDBApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: `${process.env.REACT_APP_AZURE_FUNC_URL}` }),
     endpoints: (builder) => ({
         getBadgeCounts: builder.query({
-            query: (req) => `HFHTMongoAPI?req=${JSON.stringify(req)}`,
+            query: (req) => `/api/HFHTMongoAPI?req=${JSON.stringify(req)}`,
         }),
         getFromDB: builder.query({
-            query: (req) => `HFHTMongoAPI?req=${JSON.stringify(req)}`,
+            query: (req) => `/api/HFHTMongoAPI?req=${JSON.stringify(req)}`,
         }),
         getNavigation: builder.query({
-            query: (req) => `HFHTMongoAPI?req=${JSON.stringify(req)}`,
+            query: (req) => `/api/HFHTMongoAPI?req=${JSON.stringify(req)}`,
         }),
         getOrgProfile: builder.query({
-            query: (req) => `HFHTMongoAPI?req=${JSON.stringify(req)}`,
+            query: (req) => `/api/HFHTMongoAPI?req=${JSON.stringify(req)}`,
         }),        
     }),
 })

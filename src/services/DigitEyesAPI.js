@@ -8,7 +8,7 @@ export async function UPCGet( {upc} ) {
         headers: headers
     };
 
-    return fetch(`${process.env.REACT_APP_AZURE_FUNC_URL}/DigitEyes?upc=${upc}`, options)
+    return fetch(`${process.env.REACT_APP_AZURE_FUNC_URL}/api//DigitEyes?upc=${upc}`, options)
         .then(response => response.json())
         .catch(error => console.log(error));
 
