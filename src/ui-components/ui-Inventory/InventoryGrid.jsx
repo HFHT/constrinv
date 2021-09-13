@@ -11,14 +11,23 @@ import InventoryCard from './InventoryCard'
 import { InventoryItems } from '../../scaffold/InventoryStructure'
 
 function applyFilter(filter, item) {
-//  console.debug('applyFilter:', filter, item)
-  if (filter.catSub) {
-    if ((filter.catSub === item.catSub) && (filter.catName === item.catName)) { return true }
-  } else {
-    if (filter.catName === item.catName) { return true }
-    else {
-      if (!filter.catName && item.invFav) { return true }
+  if (filter.catName) {
+//    const locationMatch = filter.locName === 'All' || item.invQty.ByLoc.find(o => o.itemLoc === filter.locName)
+//    const locationMatch = filter.locName === 'All'
+    const locationMatch = filter.locName === 'All' || ((item.invQty.ByLoc.find(o => o.itemLoc === filter.locName)) !== undefined)
+    const nameMatch = filter.catName === item.catName
+    const subMatch = filter.catSub === item.catSub
+    console.debug('applyFilter:', locationMatch,nameMatch,subMatch, item.invQty.ByLoc, filter, item)
+    if (filter.catSub) {
+      if (locationMatch && (subMatch) && (nameMatch)) { return true }
+    } else {
+      if (locationMatch && nameMatch) { return true }
+      else {
+
+      }
     }
+  } else {
+    if (item.invFav) { return true }
   }
   return false
 }
@@ -38,7 +47,7 @@ export const InventoryGrid = () => {
       <div className={classes.container}>
         <Grid container spacing={1} justifyContent="flex-start" alignItems="flex-start" className={classes.grid}>
           {inventoryObj.invItems.map(listitem => (
-            applyFilter({ catName: mainCat, catSub: subCat }, listitem) &&
+            applyFilter({ catName: mainCat, catSub: subCat, locName: locName }, listitem) &&
             <InventoryCard key={listitem.id} listItem={listitem} />
           ))}
           <div className={classes.fab}>

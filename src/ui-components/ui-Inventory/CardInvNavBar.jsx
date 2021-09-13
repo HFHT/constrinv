@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useMediaQuery, useTheme, ListItem, Drawer, List, ListItemIcon, CircularProgress } from '@mui/material';
 // Context and Redux imports
-import { useSelector, useDispatch } from 'react-redux'
-import { setNavOpen, setMainCat, setSubCat } from '../../features/navigation/navigationSlice'
+import { useDispatch } from 'react-redux'
+import { setMainCat, setSubCat } from '../../features/navigation/navigationSlice'
 import { useGetNavigationQuery } from '../../services/rtkquery/MongoDB'
 // Theme and Style imports
 import NavIconArray from '../../assets/navIcons'
@@ -18,7 +18,7 @@ export const CardInvNavBar = (props) => {
     const { data, isLoading } = useGetNavigationQuery({ method: 'find', db: 'Inventory', collection: '_Categories', find: { "_id": 0 } })
     console.log(data, isLoading)
     const dispatch = useDispatch()
-    const { navOpen, mainCat, subCat } = useSelector((state) => state.navigation)
+//    const { navOpen, mainCat, subCat } = useSelector((state) => state.navigation)
     const [elAnchor, setelAnchor] = useState(null)
     const [navItems, setNavItems] = useState([])
     const [localMainCat, setLocalMainCat] = useState(null)

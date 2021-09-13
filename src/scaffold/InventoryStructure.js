@@ -362,78 +362,10 @@ export const InventoryItems =
      "invSize": "",
      "invColor": "",
      "invDesc": "",
-     "invImg": "",
+     "invImg": "https://images.thdstatic.com/productImages/4d624ae7-4c8e-4b73-ac4a-9fa2ae0acd90/svn/brown-pressure-treated-lumber-17464-16-64_400.jpg",
      "invWarnLevels": {
-        "Yellow": 30,
-        "Red": 15
-     },
-     "invSKUs": [
-        {
-           "id": 0,
-           "invUPC": "",
-           "invMFG": "",
-           "invModel": "",
-           "img": ""
-        }
-     ],
-     "invQty": {
-        "Total": 0,
-        "ByLoc": [
-           {
-              "id": 0,
-              "itemLoc": "Office",
-              "itemAisle": "A1",
-              "itemBay": 1,
-              "itemQty": 0
-           }
-        ]
-     },
-     "invDamage": [
-        {
-           "id": 0,
-           "ReportBy": "",
-           "ReportDate": "",
-           "Desc": "",
-           "Photo": [
-              {
-                 "img": ""
-              }
-           ]
-        }
-     ],
-     "invPhotos": [
-        {
-           "id": 0,
-           "By": "",
-           "Date": "",
-           "Desc": "",
-           "img": ""
-        }
-     ]
-  },
-   {
-     "id": 1,
-     "classMod": "",
-     "invItem": "2x6x16' Top Plate  DF#2/Btr",
-     "catName": "Lumber",
-     "catSub": "Framing",
-     "invBarCode": "",
-     "invGIK": [
-        {
-           "Donor": "Mendocino Forest Products",
-           "Contact": "Adam Steinbeck, 770-437-8920, adam@mendoco.com"
-        }
-     ],
-     "invFav": false,
-     "invLastAccess": "2021/01/01",
-     "invAccessCount": 0,
-     "invSize": "",
-     "invColor": "",
-     "invDesc": "",
-     "invImg": "",
-     "invWarnLevels": {
-        "Yellow": 60,
-        "Red": 30
+        "Yellow": 38,
+        "Red": 19
      },
      "invSKUs": [
         {
@@ -498,7 +430,7 @@ export const InventoryItems =
      "invSize": "",
      "invColor": "",
      "invDesc": "",
-     "invImg": "",
+     "invImg": "https://images.thdstatic.com/productImages/d1db1121-70b3-4cbd-8617-1b7bc6c21099/svn/framing-lumber-185469-64_400.jpg",
      "invWarnLevels": {
         "Yellow": 2,
         "Red": 1
@@ -550,7 +482,7 @@ export const InventoryItems =
    {
      "id": 3,
      "classMod": "",
-     "invItem": "2x6x16 DF #2/Btr (Blocking)",
+     "invItem": "2x6x16 DF #2/Btr (Top Plate, Blocking)",
      "catName": "Lumber",
      "catSub": "Framing",
      "invBarCode": "",
@@ -566,10 +498,10 @@ export const InventoryItems =
      "invSize": "",
      "invColor": "",
      "invDesc": "",
-     "invImg": "",
+     "invImg": "https://images.thdstatic.com/productImages/3a2ae1ef-be4c-4cd9-96f2-212733988075/svn/framing-lumber-058443-64_400.jpg",
      "invWarnLevels": {
-        "Yellow": 24,
-        "Red": 12
+        "Yellow": 100,
+        "Red": 50
      },
      "invSKUs": [
         {
@@ -684,74 +616,6 @@ export const InventoryItems =
      ]
   },
    {
-     "id": 5,
-     "classMod": "",
-     "invItem": "2x6x8' Studs DF#2/Btr (Garage Wall)",
-     "catName": "Lumber",
-     "catSub": "Framing",
-     "invBarCode": "",
-     "invGIK": [
-        {
-           "Donor": "Mendocino Forest Products",
-           "Contact": "Adam Steinbeck, 770-437-8920, adam@mendoco.com"
-        }
-     ],
-     "invFav": false,
-     "invLastAccess": "2021/01/01",
-     "invAccessCount": 0,
-     "invSize": "",
-     "invColor": "",
-     "invDesc": "",
-     "invImg": "",
-     "invWarnLevels": {
-        "Yellow": 60,
-        "Red": 30
-     },
-     "invSKUs": [
-        {
-           "id": 0,
-           "invUPC": "",
-           "invMFG": "",
-           "invModel": "",
-           "img": ""
-        }
-     ],
-     "invQty": {
-        "Total": 0,
-        "ByLoc": [
-           {
-              "id": 0,
-              "itemLoc": "Office",
-              "itemAisle": "A1",
-              "itemBay": 1,
-              "itemQty": 0
-           }
-        ]
-     },
-     "invDamage": [
-        {
-           "id": 0,
-           "ReportBy": "",
-           "ReportDate": "",
-           "Desc": "",
-           "Photo": [
-              {
-                 "img": ""
-              }
-           ]
-        }
-     ],
-     "invPhotos": [
-        {
-           "id": 0,
-           "By": "",
-           "Date": "",
-           "Desc": "",
-           "img": ""
-        }
-     ]
-  },
-   {
      "id": 6,
      "classMod": "",
      "invItem": "4x4x8' DF#1 (Front Porch Post)",
@@ -770,7 +634,7 @@ export const InventoryItems =
      "invSize": "",
      "invColor": "",
      "invDesc": "",
-     "invImg": "",
+     "invImg": "https://images.thdstatic.com/productImages/78f45b48-58bf-406c-ba1e-325355ac0a09/svn/timber-441856-64_400.jpg",
      "invWarnLevels": {
         "Yellow": 2,
         "Red": 1
@@ -838,7 +702,7 @@ export const InventoryItems =
      "invSize": "",
      "invColor": "",
      "invDesc": "",
-     "invImg": "",
+     "invImg": "https://images.thdstatic.com/productImages/78f45b48-58bf-406c-ba1e-325355ac0a09/svn/timber-441856-64_400.jpg",
      "invWarnLevels": {
         "Yellow": 2,
         "Red": 1
@@ -906,7 +770,7 @@ export const InventoryItems =
      "invSize": "",
      "invColor": "",
      "invDesc": "",
-     "invImg": "",
+     "invImg": "https://images.thdstatic.com/productImages/78f45b48-58bf-406c-ba1e-325355ac0a09/svn/timber-441856-64_400.jpg",
      "invWarnLevels": {
         "Yellow": 2,
         "Red": 1
@@ -974,7 +838,7 @@ export const InventoryItems =
      "invSize": "",
      "invColor": "",
      "invDesc": "",
-     "invImg": "",
+     "invImg": "https://mobileimages.lowes.com/productimages/4e53ac8b-6e60-4f56-920f-843f1c4e803e/44253614.jpg?size=pdhi",
      "invWarnLevels": {
         "Yellow": 22,
         "Red": 11
@@ -1042,7 +906,7 @@ export const InventoryItems =
      "invSize": "",
      "invColor": "",
      "invDesc": "",
-     "invImg": "",
+     "invImg": "https://images.thdstatic.com/productImages/02514b4b-f38e-4f8b-8273-1838031d6ab2/svn/oriented-strand-board-osb-191047-64_400.jpg",
      "invWarnLevels": {
         "Yellow": 120,
         "Red": 60
@@ -1178,7 +1042,7 @@ export const InventoryItems =
      "invSize": "",
      "invColor": "",
      "invDesc": "",
-     "invImg": "",
+     "invImg": "https://images.thdstatic.com/productImages/07c5caa1-5bbd-4874-a58a-eeca758d2c4a/svn/brown-pressure-treated-lumber-17463-16-64_400.jpg",
      "invWarnLevels": {
         "Yellow": 36,
         "Red": 18
@@ -1246,78 +1110,10 @@ export const InventoryItems =
      "invSize": "",
      "invColor": "",
      "invDesc": "",
-     "invImg": "",
+     "invImg": "https://images.thdstatic.com/productImages/299c0e50-ae8d-44e8-993f-4da6770682aa/svn/framing-lumber-150932-64_400.jpg",
      "invWarnLevels": {
         "Yellow": 10,
         "Red": 5
-     },
-     "invSKUs": [
-        {
-           "id": 0,
-           "invUPC": "",
-           "invMFG": "",
-           "invModel": "",
-           "img": ""
-        }
-     ],
-     "invQty": {
-        "Total": 0,
-        "ByLoc": [
-           {
-              "id": 0,
-              "itemLoc": "Office",
-              "itemAisle": "A1",
-              "itemBay": 1,
-              "itemQty": 0
-           }
-        ]
-     },
-     "invDamage": [
-        {
-           "id": 0,
-           "ReportBy": "",
-           "ReportDate": "",
-           "Desc": "",
-           "Photo": [
-              {
-                 "img": ""
-              }
-           ]
-        }
-     ],
-     "invPhotos": [
-        {
-           "id": 0,
-           "By": "",
-           "Date": "",
-           "Desc": "",
-           "img": ""
-        }
-     ]
-  },
-   {
-     "id": 14,
-     "classMod": "",
-     "invItem": "2x4x16' Top Plate Material",
-     "catName": "Lumber",
-     "catSub": "Framing",
-     "invBarCode": "",
-     "invGIK": [
-        {
-           "Donor": "Mendocino Forest Products",
-           "Contact": "Adam Steinbeck, 770-437-8920, adam@mendoco.com"
-        }
-     ],
-     "invFav": false,
-     "invLastAccess": "2021/01/01",
-     "invAccessCount": 0,
-     "invSize": "",
-     "invColor": "",
-     "invDesc": "",
-     "invImg": "",
-     "invWarnLevels": {
-        "Yellow": 50,
-        "Red": 25
      },
      "invSKUs": [
         {
@@ -1382,7 +1178,7 @@ export const InventoryItems =
      "invSize": "",
      "invColor": "",
      "invDesc": "",
-     "invImg": "",
+     "invImg": "https://images.thdstatic.com/productImages/eb67cc0f-990b-4c67-8719-9b96e27df582/svn/framing-studs-058449-64_400.jpg",
      "invWarnLevels": {
         "Yellow": 240,
         "Red": 120
@@ -1450,146 +1246,10 @@ export const InventoryItems =
      "invSize": "",
      "invColor": "",
      "invDesc": "",
-     "invImg": "",
+     "invImg": "https://images.thdstatic.com/productImages/24b1796c-9a78-491b-a7f3-082626e04823/svn/framing-studs-232853-64_400.jpg",
      "invWarnLevels": {
         "Yellow": 40,
         "Red": 20
-     },
-     "invSKUs": [
-        {
-           "id": 0,
-           "invUPC": "",
-           "invMFG": "",
-           "invModel": "",
-           "img": ""
-        }
-     ],
-     "invQty": {
-        "Total": 0,
-        "ByLoc": [
-           {
-              "id": 0,
-              "itemLoc": "Office",
-              "itemAisle": "A1",
-              "itemBay": 1,
-              "itemQty": 0
-           }
-        ]
-     },
-     "invDamage": [
-        {
-           "id": 0,
-           "ReportBy": "",
-           "ReportDate": "",
-           "Desc": "",
-           "Photo": [
-              {
-                 "img": ""
-              }
-           ]
-        }
-     ],
-     "invPhotos": [
-        {
-           "id": 0,
-           "By": "",
-           "Date": "",
-           "Desc": "",
-           "img": ""
-        }
-     ]
-  },
-   {
-     "id": 17,
-     "classMod": "",
-     "invItem": "2x6x16' Treated Bottom Plate ",
-     "catName": "Lumber",
-     "catSub": "Treated",
-     "invBarCode": "",
-     "invGIK": [
-        {
-           "Donor": "Mendocino Forest Products",
-           "Contact": "Adam Steinbeck, 770-437-8920, adam@mendoco.com"
-        }
-     ],
-     "invFav": false,
-     "invLastAccess": "2021/01/01",
-     "invAccessCount": 0,
-     "invSize": "",
-     "invColor": "",
-     "invDesc": "",
-     "invImg": "",
-     "invWarnLevels": {
-        "Yellow": 8,
-        "Red": 4
-     },
-     "invSKUs": [
-        {
-           "id": 0,
-           "invUPC": "",
-           "invMFG": "",
-           "invModel": "",
-           "img": ""
-        }
-     ],
-     "invQty": {
-        "Total": 0,
-        "ByLoc": [
-           {
-              "id": 0,
-              "itemLoc": "Office",
-              "itemAisle": "A1",
-              "itemBay": 1,
-              "itemQty": 0
-           }
-        ]
-     },
-     "invDamage": [
-        {
-           "id": 0,
-           "ReportBy": "",
-           "ReportDate": "",
-           "Desc": "",
-           "Photo": [
-              {
-                 "img": ""
-              }
-           ]
-        }
-     ],
-     "invPhotos": [
-        {
-           "id": 0,
-           "By": "",
-           "Date": "",
-           "Desc": "",
-           "img": ""
-        }
-     ]
-  },
-   {
-     "id": 18,
-     "classMod": "",
-     "invItem": "2x6x16' DF #2/Btr Top Plate",
-     "catName": "Lumber",
-     "catSub": "Framing",
-     "invBarCode": "",
-     "invGIK": [
-        {
-           "Donor": "Mendocino Forest Products",
-           "Contact": "Adam Steinbeck, 770-437-8920, adam@mendoco.com"
-        }
-     ],
-     "invFav": false,
-     "invLastAccess": "2021/01/01",
-     "invAccessCount": 0,
-     "invSize": "",
-     "invColor": "",
-     "invDesc": "",
-     "invImg": "",
-     "invWarnLevels": {
-        "Yellow": 16,
-        "Red": 8
      },
      "invSKUs": [
         {
@@ -1654,10 +1314,10 @@ export const InventoryItems =
      "invSize": "",
      "invColor": "",
      "invDesc": "",
-     "invImg": "",
+     "invImg": "https://images.thdstatic.com/productImages/d1e3a0ab-1065-4de9-a00a-52c688cf3ec5/svn/framing-studs-845728-64_400.jpg",
      "invWarnLevels": {
-        "Yellow": 60,
-        "Red": 30
+        "Yellow": 120,
+        "Red": 60
      },
      "invSKUs": [
         {
@@ -1722,7 +1382,7 @@ export const InventoryItems =
      "invSize": "",
      "invColor": "",
      "invDesc": "",
-     "invImg": "",
+     "invImg": "https://images.thdstatic.com/productImages/3a2ae1ef-be4c-4cd9-96f2-212733988075/svn/framing-lumber-058445-64_400.jpg",
      "invWarnLevels": {
         "Yellow": 24,
         "Red": 12
@@ -1774,7 +1434,7 @@ export const InventoryItems =
    {
      "id": 21,
      "classMod": "",
-     "invItem": "2x4x16' DF #2/Btr (Brace & Rat-Runs)",
+     "invItem": "2x4x16' DF #2/Btr (Top Plate, Brace & Rat-Runs)",
      "catName": "Lumber",
      "catSub": "Framing",
      "invBarCode": "",
@@ -1790,10 +1450,10 @@ export const InventoryItems =
      "invSize": "",
      "invColor": "",
      "invDesc": "",
-     "invImg": "",
+     "invImg": "https://images.thdstatic.com/productImages/20a88173-3893-4757-a80f-1df396354444/svn/framing-lumber-2167-16-64_400.jpg",
      "invWarnLevels": {
-        "Yellow": 60,
-        "Red": 30
+        "Yellow": 110,
+        "Red": 55
      },
      "invSKUs": [
         {
@@ -1858,7 +1518,7 @@ export const InventoryItems =
      "invSize": "",
      "invColor": "",
      "invDesc": "",
-     "invImg": "",
+     "invImg": "https://images.thdstatic.com/productImages/e6e88926-2d9e-4bd2-ad17-80d5c55572e5/svn/white-primed-boards-0029008-64_400.jpg",
      "invWarnLevels": {
         "Yellow": 20,
         "Red": 10
@@ -2062,7 +1722,7 @@ export const InventoryItems =
      "invSize": "",
      "invColor": "",
      "invDesc": "",
-     "invImg": "",
+     "invImg": "https://images.thdstatic.com/productImages/f8d129e4-eab4-46e0-b1b0-466fd5cf6176/svn/sheathing-plywood-132411-64_400.jpg",
      "invWarnLevels": {
         "Yellow": 12,
         "Red": 6
@@ -6006,7 +5666,7 @@ export const InventoryItems =
      "invSize": "",
      "invColor": "",
      "invDesc": "",
-     "invImg": "",
+     "invImg": "https://images.thdstatic.com/productImages/bde7c965-5953-490e-bc1b-b8749418e502/svn/white-woodgrain-millwork-casing-10002935a-64_400.jpg",
      "invWarnLevels": {
         "Yellow": 60,
         "Red": 30
@@ -6074,7 +5734,7 @@ export const InventoryItems =
      "invSize": "",
      "invColor": "",
      "invDesc": "",
-     "invImg": "",
+     "invImg": "https://mobileimages.lowes.com/productimages/11fe6365-0bcf-4e7d-a923-0339a8fc887b/00455908.jpg?size=xl",
      "invWarnLevels": {
         "Yellow": 20,
         "Red": 10
@@ -6550,7 +6210,7 @@ export const InventoryItems =
      "invSize": "",
      "invColor": "",
      "invDesc": "",
-     "invImg": "",
+     "invImg": "https://mobileimages.lowes.com/productimages/8b682715-03af-472b-ad29-52da03579512/05295768.jpg?size=xl",
      "invWarnLevels": {
         "Yellow": 2,
         "Red": 1
@@ -6618,7 +6278,7 @@ export const InventoryItems =
      "invSize": "",
      "invColor": "",
      "invDesc": "",
-     "invImg": "",
+     "invImg": "https://mobileimages.lowes.com/productimages/33f856d4-5f7d-429e-905e-bc0ce77e10b6/15671559.jpg?size=pdhi",
      "invWarnLevels": {
         "Yellow": 6,
         "Red": 3
@@ -6686,7 +6346,7 @@ export const InventoryItems =
      "invSize": "",
      "invColor": "",
      "invDesc": "",
-     "invImg": "",
+     "invImg": "https://images.thdstatic.com/productImages/fa8063c2-2a63-4745-8903-6b10939b84e3/svn/white-cmpc-primed-boards-cmpc0028750-64_400.jpg",
      "invWarnLevels": {
         "Yellow": 12,
         "Red": 6

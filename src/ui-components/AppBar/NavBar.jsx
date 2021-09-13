@@ -1,8 +1,8 @@
 import { AppBar, useMediaQuery, useTheme } from '@mui/material';
 import { withRouter } from 'react-router-dom'
 // Context and Redux imports
-import { useDispatch } from 'react-redux'
-import { setNavOpen } from '../../features/navigation/navigationSlice'
+//import { useDispatch } from 'react-redux'
+//import { setNavOpen } from '../../features/navigation/navigationSlice'
 // Theme and Style imports
 import HFHTIcon from '../../assets/HFHI-WhiteOnBlack-logo.gif'
 import HFHTSmallIcon from '../../assets/HFHI-WhiteOnBlack-logo-Small.gif'
@@ -19,7 +19,7 @@ const NavBar = (props) => {
     const twoLine = useMediaQuery(theme.breakpoints.down('multiLine'))
     const { history } = props;
     const classes = appBarStyles()
-    const dispatch = useDispatch()
+//    const dispatch = useDispatch()
     //    const matches = useMediaQuery(theme.breakpoints.down('smallLogo'));
     //    const logoSize = useMediaQuery(theme.breakpoints.down('smallLogo'));
     const matches = false
