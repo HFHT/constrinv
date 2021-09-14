@@ -49,14 +49,24 @@ export default function InventoryCard(props) {
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
+
+    const handleFavoriteClick = (props) => {
+        console.log('Favorite:', props)
+    }
     const handleInvEditClick = (props) => {
-        //        console.log(props)
+        console.log(props)
     }
     const handleAddPalletClick = (props) => {
-        //        console.log(props)
+        console.log(props)
     }
     const handleAddShipClick = (props) => {
-        //        console.log(props)
+        console.log(props)
+    }
+    const handlePrintClick = (props) => {
+        console.log(props)
+    }
+    const handleAddCartClick = (props) => {
+        console.log(props)
     }
     return (
         <Grid item xs={12} sm={6} md={4} lg={3} xl={2} >
@@ -66,7 +76,7 @@ export default function InventoryCard(props) {
                         <Avatar {...stringAvatar(props.listItem.catName, props.listItem.invWarnLevels, props.listItem.invQty.Total)} aria-label={props.listItem.catName} />
                     }
                     action={
-                        <IconButton aria-label="settings">
+                        <IconButton aria-label="settings" onClick={() => handleFavoriteClick(props.listItem._id)}>
                             <Star color={props.listItem.invFav ? 'warning' : 'action'} />
                         </IconButton>
                     }
@@ -87,18 +97,18 @@ export default function InventoryCard(props) {
                     </CardContent>
                 </CardActionArea>
                 <CardActions disableSpacing>
-                    <IconButton aria-label="print barcode">
+                    <IconButton aria-label="print barcode" onClick={() => handlePrintClick(props)}>
                         <Print />
                     </IconButton>
-                    <IconButton aria-label="add to cart">
+                    <IconButton aria-label="add to cart" onClick={() => handleAddCartClick(props)}>
                         <ShoppingCart />
                     </IconButton>
-                    <IconButton aria-label="add to shipment">
+                    <IconButton aria-label="add to shipment" onClick={() => handleAddShipClick(props)}>
                         <LocalShipping />
                     </IconButton>
-                    <IconButton aria-label="add to pallet">
+                    <IconButton aria-label="add to pallet" onClick={() => handleAddPalletClick(props)}>
                         <PostAdd />
-                    </IconButton>                    
+                    </IconButton>
                     <ExpandMore
                         expand={expanded}
                         onClick={handleExpandClick}
@@ -110,7 +120,7 @@ export default function InventoryCard(props) {
                 </CardActions>
                 <Collapse in={expanded} timeout="auto" unmountOnExit>
                     <CardContent>
-                    <CardInvLocation locAry={props.listItem.invQty.ByLoc} />
+                        <CardInvLocation locAry={props.listItem.invQty.ByLoc} />
                     </CardContent>
                 </Collapse>
             </Card>
