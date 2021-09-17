@@ -35,7 +35,7 @@ export const InventoryGrid = () => {
   const { invItems, setInvItems } = inventoryContext
   const inventoryObj = invItems
   //  console.debug('invItems:', invItems)  
-  const { mainCat, subCat, filter } = useSelector((state) => state.navigation)
+  const { mainCat, subCat, filter, fuzzy } = useSelector((state) => state.navigation)
   const { locName } = useSelector((state) => state.locations)
   console.log('InventoryGrid render:', mainCat)
 
@@ -46,7 +46,9 @@ export const InventoryGrid = () => {
     shouldSort: true,
     minMatchCharLength: 1
   })
-  if (invItems) { fuseResults = fuseSearch.search(filter); console.log('R:', fuseResults.slice(0, 12)) }
+  const options = !fuzzy ? {'threshold':0, 'distance':0, 'ignoreLocation': true} : {}
+  const exact = !fuzzy ? '=' : ''
+  if (invItems) { fuseResults = fuseSearch.search(exact+filter, options); console.log('R:', exact, options, fuseResults.slice(0, 12)) }
 
   const handleInvEditClick = (props) => {
     console.log(props)

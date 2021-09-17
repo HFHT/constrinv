@@ -4,6 +4,7 @@ const initialState = {
   mainCat: null,
   subCat: null,
   filter: '',
+  fuzzy: true, 
   navOpen: false   
 }
 
@@ -24,6 +25,9 @@ export const navigationSlice = createSlice({
     setFilter: (state, action) => {
       state.filter = action.payload
     },
+    setFuzzy: (state, action) => {
+      state.fuzzy = action.payload
+    },    
     setNavOpen: (state, action) => {
       state.navOpen = action.payload
     }
@@ -31,6 +35,6 @@ export const navigationSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setMainCat, setSubCat, setFilter, setNavOpen } = navigationSlice.actions
+export const { setMainCat, setSubCat, setFilter, setFuzzy, setNavOpen } = navigationSlice.actions
 
 export default navigationSlice.reducer
