@@ -15,10 +15,7 @@ const SearchBox = () => {
     dispatch(setFuzzy(true))
     dispatch(setFilter(value))
     console.log('Search:',value)
-  }
-  const handleSearchSubmit = (props) => {
-    console.log('SearchSubmit:',props)
-  }  
+  } 
   const handleCheckFuzzyToggle = (props) => {
     console.log(props.code)
     if  (props.code === 'Enter') {
@@ -36,6 +33,7 @@ const SearchBox = () => {
       <StyledInputBase
         autoFocus={true}
         placeholder="Search…"
+        type="search"
         value={filter}
         inputProps={{ 'aria-label': 'search' }}
         onChange={(e) => handleSearchChange(e)}

@@ -21,6 +21,7 @@ export const CardInvNavBar = (props) => {
 //    const { navOpen, mainCat, subCat } = useSelector((state) => state.navigation)
     const [elAnchor, setelAnchor] = useState(null)
     const [navItems, setNavItems] = useState([])
+//    const [touchStart, setTouchStart] = useState(false)
     const [localMainCat, setLocalMainCat] = useState(null)
     const [localNavOpen, setLocalNavOpen] = useState(false)
     const handleClose = (e) => {
@@ -28,7 +29,10 @@ export const CardInvNavBar = (props) => {
         //setNavOpen(false)
     }
     const handleOpen = (catName, catSub, event) => {
-        console.log('handleOpen:', catName, catSub)
+        event.preventDefault()
+//        setTouchStart(true)
+//        event.stopPropagation()
+        console.log('handleOpen:', catName, catSub, event)
         setNavItems(catSub)
         setLocalMainCat(catName)
         setLocalNavOpen(true)
@@ -37,7 +41,13 @@ export const CardInvNavBar = (props) => {
         setelAnchor(event.currentTarget)
     }
     const handleMenuClick = (props, event) => {
-        console.log('handleMenuClick:', props.catName)
+        event.preventDefault()
+//        if (touchStart) {
+//            setTouchStart(false)
+//            return false
+//        }
+//        event.stopPropagation()
+        console.log('handleMenuClick:', props.catName, event)
         dispatch(setMainCat(props.catName))
         dispatch(setSubCat(null))
         //    console.log(elAnchor)
@@ -56,7 +66,9 @@ export const CardInvNavBar = (props) => {
         setLocalNavOpen(false)
 //        dispatch(setNavOpen(false));
     }
-    const handleSubClick = (catSub, e) => {
+    const handleSubClick = (catSub, event) => {
+        event.preventDefault()
+//        event.stopPropagation()
         dispatch(setMainCat(localMainCat))
         dispatch(setSubCat(catSub))
         setLocalNavOpen(false)        
@@ -112,7 +124,7 @@ export const CardInvNavBar = (props) => {
                         <Drawer variant="permanent" PaperProps={{ className: classes.drawer }}>
                             <List>
                                 {data[0].invCat.map(listitem => (
-                                    <ListItem key={listitem.id} className={classes.li} onClick={(e) => handleMenuClick(listitem, e)} onMouseEnter={(e) => handleOpen(listitem.catName, listitem.catSub, e)} onMouseLeave={(e) => handleClose(e)}>
+                                    <ListItem key={listitem.id} className={classes.li} onClick={(e) => handleMenuClick(listitem, e)} onMouseEnter={(e) => handleOpen(listitem.catName, listitem.catSub, e)}  onTouchStart={(e) => handleOpen(listitem.catName, listitem.catSub, e)}>
                                         <ListItemIcon >
                                             <img src={NavIconArray[listitem.id]} alt="" className={classes.icon} />
                                         </ListItemIcon>

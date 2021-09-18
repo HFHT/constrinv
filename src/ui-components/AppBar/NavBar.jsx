@@ -1,8 +1,8 @@
 import { AppBar, useMediaQuery, useTheme } from '@mui/material';
 import { withRouter } from 'react-router-dom'
 // Context and Redux imports
-//import { useDispatch } from 'react-redux'
-//import { setNavOpen } from '../../features/navigation/navigationSlice'
+import { useDispatch } from 'react-redux'
+import { setMainCat, setSubCat } from '../../features/navigation/navigationSlice'
 // Theme and Style imports
 import HFHTIcon from '../../assets/HFHI-WhiteOnBlack-logo.gif'
 import HFHTSmallIcon from '../../assets/HFHI-WhiteOnBlack-logo-Small.gif'
@@ -15,6 +15,7 @@ import SearchBox from './SearchBox';
 import SubBar from './SubBar';
 
 const NavBar = (props) => {
+    const dispatch = useDispatch()
     const theme = useTheme()
     const twoLine = useMediaQuery(theme.breakpoints.down('multiLine'))
     const { history } = props;
@@ -25,6 +26,8 @@ const NavBar = (props) => {
     const matches = false
     const logoSize = false
     const handleMenuClick = (pageURL) => {
+        dispatch(setMainCat(null))
+        dispatch(setSubCat(null))
         console.log(pageURL)
         history.push(pageURL)
     }

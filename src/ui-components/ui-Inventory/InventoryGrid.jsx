@@ -41,14 +41,21 @@ export const InventoryGrid = () => {
 
   var fuseResults = []
   const fuseSearch = new Fuse(invItems, {
-    keys: ['invItem', 'invDesc'],
+    keys: ['invItem', 'invDesc', 'invSKUs.invUPC', 'invSKUs.invMFG', 'invSKUs.invModel'],
     includeScore: true,
     shouldSort: true,
+    includeMatches: true,
+    findAllMatches: true,
+    ignoreFieldNorm : true,
     minMatchCharLength: 1
   })
-  const options = !fuzzy ? {'threshold':0, 'distance':0, 'ignoreLocation': true} : {}
-  const exact = !fuzzy ? '=' : ''
-  if (invItems) { fuseResults = fuseSearch.search(exact+filter, options); console.log('R:', exact, options, fuseResults.slice(0, 12)) }
+
+  if (invItems) { 
+    const options = !fuzzy ? {threshold:0, distance:0, useExtendedSearch: true, minMatchCharLength: filter.length} : {ignoreLocation: true}
+    const exact = !fuzzy ? '=' : ''    
+    fuseResults = fuseSearch.search(exact+filter, options)
+    console.log('R:', exact+filter, options, fuseResults.slice(0, 12)) 
+  }
 
   const handleInvEditClick = (props) => {
     console.log(props)
