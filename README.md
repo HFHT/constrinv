@@ -1,5 +1,6 @@
 # Construction Inventory
 Redux navOpen is now deprecated, can use local state to minimize rerenders
+Change of favorite, push to history, write to DB, and record status on conclusion of write.
 ###### Tasks
 - [x] Refactor NavContext, I don't think we need NavCat anymore now that the navigation is in the OrgProfile 
 - [x] Resizing of the Top Navigation bar

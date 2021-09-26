@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react';
-import { styled } from '@mui/material/styles';
+import { useEffect, useState, useContext } from 'react';
 import { Card, Grid, CardHeader, CardActionArea, CardMedia, CardContent, CardActions, Collapse, Avatar, IconButton, Typography } from '@mui/material'
-
+// Context and Redux imports
+// Theme and Style imports
+import { styled } from '@mui/material/styles';
 import { red, green, orange } from '@mui/material/colors';
-import { ShoppingCart, Print, LocalShipping, PostAdd, Star } from '@mui/icons-material';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { ShoppingCart, Print, LocalShipping, PostAdd, Star, ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
+// Component imports
 import CardInvLocation from './CardInvLocation'
+import { InventoryContext } from "../../context/InventoryContext";
+import { usePushItemHistory } from '../../services/itemHistory'
 
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
@@ -40,11 +40,17 @@ function stringAvatar(name, warn, level) {
 }
 
 export default function InventoryCard(props) {
+    const inventoryContext = useContext(InventoryContext)
+    const { invItems, setInvItems, invItemHistory, setInvItemHistory } = inventoryContext  
+    const [expanded, setExpanded] = useState(false)
+    const [curCardItem, setCurCardItem] = useState(props.listItem)
+    const idx = props.index      
     useEffect(() => {
         console.debug('InventoryCard render')
     }, [])
-
-    const [expanded, setExpanded] = useState(false);
+    useEffect(() => {
+        console.debug('Inventory Card Item changed')
+    }, [curCardItem])
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
@@ -52,7 +58,11 @@ export default function InventoryCard(props) {
 
     const handleFavoriteClick = (props) => {
         console.log('Favorite:', props)
-    }
+        var curcard = {...curCardItem, invFav: !curCardItem.invFav}
+        setCurCardItem({...curcard})
+        const updateItem = invItems.map((item) => item._id === props.listItem._id ? curcard : item)
+        console.log(curcard, curCardItem, updateItem)
+        setInvItems(updateItem)    }
     const handleInvEditClick = (props) => {
         console.log(props)
     }
@@ -76,8 +86,8 @@ export default function InventoryCard(props) {
                         <Avatar {...stringAvatar(props.listItem.catName, props.listItem.invWarnLevels, props.listItem.invQty.Total)} aria-label={props.listItem.catName} />
                     }
                     action={
-                        <IconButton aria-label="settings" onClick={() => handleFavoriteClick(props.listItem._id)}>
-                            <Star color={props.listItem.invFav ? 'warning' : 'action'} />
+                        <IconButton aria-label="settings" onClick={() => handleFavoriteClick(props)}>
+                            <Star color={curCardItem.invFav ? 'warning' : 'action'} />
                         </IconButton>
                     }
                     title={props.listItem.invItem}
