@@ -1,6 +1,8 @@
 import { useEffect, useState, useContext } from 'react';
 import { Card, Grid, CardHeader, CardActionArea, CardMedia, CardContent, CardActions, Collapse, Avatar, IconButton, Typography } from '@mui/material'
 // Context and Redux imports
+import { useSelector, useDispatch } from 'react-redux'
+import { setEditModalOpen, setEditCardContents } from '../../features/CardActions/editSlice'
 // Theme and Style imports
 import { styled } from '@mui/material/styles';
 import { red, green, orange } from '@mui/material/colors';
@@ -8,6 +10,7 @@ import { ShoppingCart, Print, LocalShipping, PostAdd, Star, ExpandMore as Expand
 // Component imports
 import CardInvLocation from './CardInvLocation'
 import { InventoryContext } from "../../context/InventoryContext";
+import { useHandleChange, useAddToHistory } from '../../services/hooks/useHandleChange';
 import { usePushItemHistory } from '../../services/itemHistory'
 
 const ExpandMore = styled((props) => {
@@ -44,6 +47,9 @@ export default function InventoryCard(props) {
     const { invItems, setInvItems, invItemHistory, setInvItemHistory } = inventoryContext  
     const [expanded, setExpanded] = useState(false)
     const [curCardItem, setCurCardItem] = useState(props.listItem)
+    const dispatch = useDispatch()
+    const [isSaved, handleChange] = useHandleChange(null)
+    const [isAdded, handleAddToHistory] = useAddToHistory(null)
     const idx = props.index      
     useEffect(() => {
         console.debug('InventoryCard render')
@@ -55,16 +61,27 @@ export default function InventoryCard(props) {
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
-
     const handleFavoriteClick = (props) => {
         console.log('Favorite:', props)
         var curcard = {...curCardItem, invFav: !curCardItem.invFav}
         setCurCardItem({...curcard})
         const updateItem = invItems.map((item) => item._id === props.listItem._id ? curcard : item)
         console.log(curcard, curCardItem, updateItem)
-        setInvItems(updateItem)    }
+        setInvItems(updateItem)    
+    }
+ /*   const handleFavoriteClick = (props) => {
+        console.log('Favorite:', props)
+        const curCard = {...curCardItem}
+        const newCard = {...curCard, invFav: !curCard.invFav }
+//        var curcard = {...curCardItem, invFav: !curCardItem.invFav}
+        setCurCardItem({...newCard})
+        handleChange({_id: curCard._id, result: null, newCard: newCard, itemBefore: {invFav: curCard.invFav}, itemAfter: {invFav: newCard.invFav}})
+
+    } */
     const handleInvEditClick = (props) => {
         console.log(props)
+        dispatch(setEditModalOpen(true))
+        dispatch(setEditCardContents(props.listItem))
     }
     const handleAddPalletClick = (props) => {
         console.log(props)

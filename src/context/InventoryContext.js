@@ -10,7 +10,7 @@ export const InventoryContextProvider = props => {
     const { data, isLoading } = useGetFromDBQuery({ method: 'find', db: 'Inventory', collection: 'Items' })
 
     const [invItems, setInvItems] = useState([])
-    const [invItemHistory, setInvItemHistory] = useState([{key: '', result: '', itemBefore: '', itemAfter: ''}])
+    const [invItemHistory, setInvItemHistory] = useState([{_id: '', result: '', itemBefore: '', itemAfter: ''}])
 
     const itemContext = {
         invItems,

@@ -1,28 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  locName: 'All',
-  shipName: null
+  orgProfile: null
 }
 
-export const locationsSlice = createSlice({
+export const profileSlice = createSlice({
   name: 'locations',
   initialState,
   reducers: {
-    setLocName: (state, action) => {
+    setOrgProfile: (state, action) => {
       // Redux Toolkit allows us to write "mutating" logic in reducers. It
       // doesn't actually mutate the state because it uses the Immer library,
       // which detects changes to a "draft state" and produces a brand new
       // immutable state based off those changes
-      state.locName = action.payload
+      state.orgProfile = action.payload
     },
-    setShipName: (state, action) => {
-      state.shipName = action.payload
-    }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setLocName, setShipName } = locationsSlice.actions
+export const { setOrgProfile } = profileSlice.actions
 
-export default locationsSlice.reducer
+export default profileSlice.reducer

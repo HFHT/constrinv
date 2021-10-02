@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Table, TableBody, TableCell, TableContainer,TableRow, Paper } from '@mui/material';
 import { cardTableStyles } from '../../styles/inventoryCardStyles'
 

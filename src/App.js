@@ -4,6 +4,8 @@ import { CircularProgress } from '@mui/material';
 import { MsalProvider, AuthenticatedTemplate, UnauthenticatedTemplate, } from "@azure/msal-react";
 import { CustomNavigationClient } from "./services/NavigationClient";
 // Context and Redux imports
+import { useDispatch } from 'react-redux'
+import { setOrgProfile } from "./features/profile/profileSlice"
 // Theme and Style imports
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from "./styles/theme";
@@ -20,11 +22,12 @@ import { useGetOrgProfileQuery } from './services/rtkquery/MongoDB'
 function App({ pca }) {
   // The next 3 lines is how you configure MSAL to take advantage of the router's navigate functions when MSAL redirects between pages in your app
   const history = useHistory();
+  const dispatch = useDispatch()
   const navigationClient = new CustomNavigationClient(history);
   pca.setNavigationClient(navigationClient);
 
   const { data, error, isLoading } = useGetOrgProfileQuery({ method: 'find', db: 'Inventory', collection: 'Profile', find: { "_id": 0 } })
-
+  !isLoading && dispatch(setOrgProfile(data[0]))
   return (
     <MsalProvider instance={pca}>
       <UserProvider instance={pca}>

@@ -47,5 +47,17 @@ export const cardTableStyles = makeStyles((theme) => ({
         width: '80px',
         whiteSpace: 'nowrap',   
         fontSize: '0.8rem'     
+    },
+    a: {
+        display: 'block',
+        height: '100%'
+    },
+    img: {
+        objectFit: 'cover',
+        width: '100%',
+        height: '100%'
+    },
+    dialogContent: {
+        paddingBottom: '6px'
     }
 }))

@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react';
-import { Grid, Fab } from '@mui/material';
+import { Grid, Fab, Dialog } from '@mui/material';
 import { Add as AddIcon } from '@mui/icons-material';
 import Fuse from 'fuse.js'
 // Context and Redux imports
@@ -10,6 +10,7 @@ import { invGridStyles } from '../../styles/inventoryCardStyles'
 import { } from '../../styles/appStyles'
 // Component imports
 import InventoryCard from './InventoryCard'
+import CardEdit from '../ui-ItemEdit/CardEdit';
 import { InventoryItems } from '../../scaffold/InventoryStructure'
 
 function applyFilter(filter, item) {
@@ -85,6 +86,7 @@ export const InventoryGrid = () => {
               </Fab>
             </div>
           </Grid>
+          <CardEdit />
         </div>
       }
     </main>
