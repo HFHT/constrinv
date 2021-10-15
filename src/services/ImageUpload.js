@@ -10,5 +10,11 @@ console.log('ImageParm:',file)
     var blobName = file.name
     var login = `${url}/${container}/${blobName}?${sasKey}`; 
     var blockBlobClient = new BlockBlobClient(login, new AnonymousCredential)
-    blockBlobClient.uploadBrowserData(file.prototype.stream());
+    const reader = new FileReader()
+    reader.onload = () => {
+        blockBlobClient.uploadBrowserData(reader.result);
+    }
+    reader.onabort = () => console.log('file reading was aborted')
+    reader.onerror = () => console.log('file reading has failed')    
+    reader.readAsArrayBuffer(file)
 }

@@ -34,7 +34,7 @@ function DropzoneComponent(props) {
   const [files, setFiles] = useState([]);
 
   const onDrop = useCallback(acceptedFiles => {
-    acceptedFiles.map(file => ImageUpload(file))
+    acceptedFiles.forEach(file => ImageUpload(file))
     setFiles(acceptedFiles.map(file => Object.assign(file, {
       preview: URL.createObjectURL(file)
     })));
