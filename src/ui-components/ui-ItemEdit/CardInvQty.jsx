@@ -48,13 +48,13 @@ const CardInvQty = (props) => {
                                         <b>{row.locName}</b>
                                     </TableCell>
                                     <TableCell align="left" className={classes.tableCell}>
-                                        <TextField defaultValue={row.itemQty} label="Stock" type="number" margin="dense" size="small" variant="standard" />
+                                        <TextField defaultValue={row.itemQty} label="Stock" type="number" inputProps={{min: 0}} margin="dense" size="small" variant="standard" />
                                     </TableCell>
                                     <TableCell align="left" className={classes.tableCell}>
                                         <TextField defaultValue={row.itemAisle} label="Aisle" type="text" margin="dense" size="small" variant="standard" />
                                     </TableCell>
                                     <TableCell align="left" className={classes.tableCell}>
-                                        <TextField defaultValue={row.itemBay} label="Bay" type="number" margin="dense" size="small" variant="standard" />
+                                        <TextField defaultValue={row.itemBay} label="Bay" type="number" inputProps={{min: 0}} margin="dense" size="small" variant="standard" />
                                     </TableCell>
                                 </TableRow>
                             ))}

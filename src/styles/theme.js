@@ -1,7 +1,9 @@
-import { unstable_createMuiStrictModeTheme as createMuiTheme } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
+//import { unstable_createMuiStrictModeTheme as createMuiTheme } from '@mui/material/styles';
+
 import { red } from '@mui/material/colors';
 // Create a theme instance.
-export const theme = createMuiTheme({
+export let theme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
@@ -31,4 +33,18 @@ export const theme = createMuiTheme({
       xl: 1920
     }
   }
-});
+})
+// MuiDropZoneArea only left in as example.
+theme = createTheme(theme, {
+  components: {
+    MuiDropzoneArea: {
+      styleOverrides: {
+        root: {
+          height: 'auto',
+
+          border: 'unset'
+        }
+      }
+    }
+  }
+})

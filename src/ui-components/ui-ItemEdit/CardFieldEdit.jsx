@@ -75,12 +75,12 @@ const CardFieldEdit = (props) => {
                     </Grid>
                     <Grid item xs={12} sm={6} md={3} lg={3} xl={3} >
                         <FormControl variant="standard" sx={{ m: 1, maxWidth: 120 }}>
-                            <TextField defaultValue={editCardContents.invWarnLevels.Yellow} type="number" label="Warn Level" margin="dense" required variant="outlined" />
+                            <TextField defaultValue={editCardContents.invWarnLevels.Yellow} type="number" label="Warn Level" inputProps={{min: 0}} margin="dense" required variant="outlined" />
                         </FormControl>
                     </Grid>
                     <Grid item xs={12} sm={6} md={3} lg={3} xl={3} >
                         <FormControl variant="standard" sx={{ m: 1, maxWidth: 120 }}>
-                            <TextField defaultValue={editCardContents.invWarnLevels.Red} type="number" label="Alert Level" margin="dense" required variant="outlined" />
+                            <TextField defaultValue={editCardContents.invWarnLevels.Red} type="number" label="Alert Level" inputProps={{min: 0}} margin="dense" required variant="outlined" />
                         </FormControl>
                     </Grid>
                 </Grid>

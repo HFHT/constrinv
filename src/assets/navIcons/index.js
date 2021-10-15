@@ -12,4 +12,4 @@ import CBTool from './Cat12-Palette.png'
 import CCPall from './Cat12-Palette.png'
 
 const icons = [C1Appl,C2Bldg,C3Door,C4Elec,C5Flor,C6Hdwr,C7Hvac,C8Kitc,C9Pain,CAPlum,CBTool,CCPall]
-export default icons
+export default icons 

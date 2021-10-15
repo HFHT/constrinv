@@ -59,5 +59,11 @@ export const cardTableStyles = makeStyles((theme) => ({
     },
     dialogContent: {
         paddingBottom: '6px'
+    },
+    expandDiv: {
+        display: 'flex'
+    },
+    dragArea: {
+        height: '164px'
     }
 }))
