@@ -10,5 +10,5 @@ console.log('ImageParm:',file)
     var blobName = file.name
     var login = `${url}/${container}/${blobName}?${sasKey}`; 
     var blockBlobClient = new BlockBlobClient(login, new AnonymousCredential)
-    blockBlobClient.uploadBrowserData(file);
+    blockBlobClient.uploadBrowserData(file.preview);
 }
