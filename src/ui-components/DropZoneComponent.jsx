@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useUpdateDBMutation } from '../services/rtkquery/MongoDB';
 import { useDropzone } from 'react-dropzone';
 import { ImageUpload } from '../services/ImageUpload';
+import { TonalitySharp } from '@mui/icons-material';
 
 const baseStyle = {
   display: 'flex',
@@ -32,9 +34,23 @@ const rejectStyle = {
 
 function DropzoneComponent(props) {
   const [files, setFiles] = useState([]);
+  const [updateDB, { isLoading: isUpdating }] = useUpdateDBMutation()
 
   const onDrop = useCallback(acceptedFiles => {
-    acceptedFiles.forEach(file => ImageUpload(file))
+    acceptedFiles.forEach((file) => {
+      ImageUpload(file)
+      console.log('onDrop:', file.name)
+      updateDB(
+        {
+          method: 'updateOne',
+          db: 'Inventory',
+          collection: 'Items',
+          find: { "_id": 24 },
+          data: { "invPhotos[0].img": file.name }
+        },
+        { pollingInterval: process.env.REACT_APP_DBPOLLTIME }
+      )
+    })
     setFiles(acceptedFiles.map(file => Object.assign(file, {
       preview: URL.createObjectURL(file)
     })));
@@ -78,7 +94,7 @@ function DropzoneComponent(props) {
 
   return (
     <section>
-      <div {...getRootProps({style})}>
+      <div {...getRootProps({ style })}>
         <input {...getInputProps()} />
         <div>Drag and drop your image here.</div>
       </div>
