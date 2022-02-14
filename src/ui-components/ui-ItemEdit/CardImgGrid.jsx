@@ -4,7 +4,7 @@ import { Info as InfoIcon, Star, AddCircle } from '@mui/icons-material';
 import { useDropzone } from 'react-dropzone'
 // Context and Redux imports
 import { useSelector, useDispatch } from 'react-redux'
-import { setEditModalOpen, setImgEditModalOpen, setEditCardContents } from '../../features/CardActions/editSlice'
+import { selectModal, setEditModalOpen, setImgEditModalOpen, setEditCardContents } from '../../features/CardActions/editSlice'
 import { cardTableStyles } from '../../styles/inventoryCardStyles'
 import { DropAreaIcon } from '../../assets/actionIcons'
 import DropzoneComponent from '../DropZoneComponent';
@@ -26,7 +26,7 @@ const CardImgGrid = (props) => {
       });
     const { ref, ...rootProps } = getRootProps()
     const classes = cardTableStyles()
-    const { isImgEditModalOpen, editCardContents } = useSelector((state) => state.editModal)
+    const editCardContents  = useSelector(selectModal)    
     const [selectedTile, setSelectedTile] = useState(null);
     const [imagesReady, setImagesReady] = useState(false)
     const [allImages, setAllImages] = useState([])

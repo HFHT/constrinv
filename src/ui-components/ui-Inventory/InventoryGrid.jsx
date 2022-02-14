@@ -63,7 +63,7 @@ export const InventoryGrid = () => {
     inventoryObj = false
     setTimeout(() => {inventoryObj=invItems;console.debug('Inventory Grid Item changed', invItems, inventoryObj)},3000)
     
-  }, [invItems])
+  }, [])
 
   const handleInvEditClick = (props) => {
     console.log(props)

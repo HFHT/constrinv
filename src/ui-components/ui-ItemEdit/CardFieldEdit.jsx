@@ -2,8 +2,9 @@ import { useEffect, useMediaQuery } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogContentText, TextField, Grid, Button, MenuItem, InputLabel, Select, FormControl } from '@mui/material';
 // Context and Redux imports
 import { useSelector, useDispatch } from 'react-redux'
-import { setEditModalOpen } from '../../features/CardActions/editSlice'
+import { setEditModalOpen, selectModal } from '../../features/CardActions/editSlice'
 import { cardTableStyles } from '../../styles/inventoryCardStyles'
+import { useHandleChange } from '../../services/hooks/useHandleChange';
 
 const CardFieldEdit = (props) => {
     useEffect(() => {
@@ -11,7 +12,8 @@ const CardFieldEdit = (props) => {
 
     const classes = cardTableStyles()
     //    const twoLine = useMediaQuery(theme.breakpoints.down('multiLine'))
-    const { editCardContents } = useSelector((state) => state.editModal)
+    const editCardContents  = useSelector(selectModal)
+//    const [isSaved, handleChange] = useHandleChange()
     const dispatch = useDispatch()
     const handleClose = () => {
         /* check for changes and ask are you sure before leaving */
@@ -23,17 +25,18 @@ const CardFieldEdit = (props) => {
     const handleChange = (props) => {
         /* check for changes and ask are you sure before leaving */
         console.log(props)
+       console.log(props.target.value, props.target.name)
     }
 
     return (
         <div>
             <DialogTitle sx={{ py: 1 }}>
-                <TextField defaultValue={editCardContents.invItem} label="Item Name" margin="dense" fullWidth required variant="filled" />
+                <TextField name="invItem" defaultValue={editCardContents.invItem} onChange={handleChange} label="Item Name" margin="dense" fullWidth required variant="filled" />
             </DialogTitle>
             <DialogContent sx={{ pb: 1 / 2 }}>
                 <DialogContentText>
                 </DialogContentText>
-                <TextField defaultValue={editCardContents.invDesc} label="Description" margin="dense" fullWidth variant="outlined" multiline />
+                <TextField name="invDesc" defaultValue={editCardContents.invDesc} onChange={handleChange} label="Description" margin="dense" fullWidth variant="outlined" multiline />
                 <Grid container spacing={1/2} justifyContent="flex-start" alignItems="flex-start" className={classes.grid}>
                     <Grid item xs={12} sm={6} md={3} lg={3} xl={3} >
                         <FormControl variant="outlined" sx={{ m: 1, minWidth: 120 }}>
@@ -41,6 +44,7 @@ const CardFieldEdit = (props) => {
                             <Select
                                 labelId="demo-simple-select-standard-label"
                                 id="demo-simple-select-standard"
+                                name="catName"
                                 value={''}
                                 onChange={handleChange}
                                 label="Category"
@@ -48,9 +52,9 @@ const CardFieldEdit = (props) => {
                                 <MenuItem value="">
                                     <em>--Select</em>
                                 </MenuItem>
-                                <MenuItem value={10}>Appliances</MenuItem>
-                                <MenuItem value={20}>Building Materials</MenuItem>
-                                <MenuItem value={30}>Doors & Windows</MenuItem>
+                                <MenuItem value='Appliances'>Appliances</MenuItem>
+                                <MenuItem value='Building Materials'>Building Materials</MenuItem>
+                                <MenuItem value='Doors & Windows'>Doors & Windows</MenuItem>
                             </Select>
                         </FormControl>
                     </Grid>
@@ -61,6 +65,7 @@ const CardFieldEdit = (props) => {
                             <Select
                                 labelId="demo-simple-select-standard-label"
                                 id="demo-simple-select-standard"
+                                name="catSub"
                                 value={''}
                                 onChange={handleChange}
                                 label="Subcategory"
@@ -75,12 +80,12 @@ const CardFieldEdit = (props) => {
                     </Grid>
                     <Grid item xs={12} sm={6} md={3} lg={3} xl={3} >
                         <FormControl variant="standard" sx={{ m: 1, maxWidth: 120 }}>
-                            <TextField defaultValue={editCardContents.invWarnLevels.Yellow} type="number" label="Warn Level" inputProps={{min: 0}} margin="dense" required variant="outlined" />
+                            <TextField name="invWarnLevels.Yellow" defaultValue={editCardContents.invWarnLevels.Yellow} type="number" label="Warn Level" inputProps={{min: 0}} onChange={handleChange} margin="dense" required variant="outlined" />
                         </FormControl>
                     </Grid>
                     <Grid item xs={12} sm={6} md={3} lg={3} xl={3} >
                         <FormControl variant="standard" sx={{ m: 1, maxWidth: 120 }}>
-                            <TextField defaultValue={editCardContents.invWarnLevels.Red} type="number" label="Alert Level" inputProps={{min: 0}} margin="dense" required variant="outlined" />
+                            <TextField name="invWarnLevels.Red" defaultValue={editCardContents.invWarnLevels.Red} type="number" label="Alert Level" inputProps={{min: 0}} onChange={handleChange} margin="dense" required variant="outlined" />
                         </FormControl>
                     </Grid>
                 </Grid>

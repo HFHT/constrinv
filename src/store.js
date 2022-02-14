@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
+import undoable from 'redux-undo';
 import counterReducer from './features/counter/counterSlice'
 import navigationReducer from './features/navigation/navigationSlice'
 import userReducer from './features/user/userSlice'
@@ -17,7 +18,7 @@ export const store = configureStore({
     orgProfile: orgProfileReducer,
     badges: badgesReducer,
     locations: locationsReducer,
-    editModal : editModalReducer,
+    editModal : undoable(editModalReducer),
     [mongoDBApi.reducerPath]: mongoDBApi.reducer,
     [graphApi.reducerPath]: graphApi.reducer
   },

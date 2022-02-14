@@ -22,11 +22,15 @@ export const editModalSlice = createSlice({
     },
     setEditCardContents: (state, action) => {
       state.editCardContents = action.payload
+      state.isEditModalOpen = true
     }
   },
 })
 
 // Action creators are generated for each case reducer function
 export const { setEditModalOpen, setImgEditModalOpen, setEditCardContents } = editModalSlice.actions
+
+export const selectModal = (state) => state.editModal.present.editCardContents
+export const selectModalOpen = (state) => state.editModal.present.isEditModalOpen
 
 export default editModalSlice.reducer

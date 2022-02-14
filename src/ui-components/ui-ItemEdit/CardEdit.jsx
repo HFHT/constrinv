@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Dialog, DialogActions, Button } from '@mui/material';
 // Context and Redux imports
 import { useSelector, useDispatch } from 'react-redux'
-import { setEditModalOpen } from '../../features/CardActions/editSlice'
+import { ActionCreators } from "redux-undo";
+import { setEditModalOpen, selectModal, selectModalOpen } from '../../features/CardActions/editSlice'
 import { cardTableStyles } from '../../styles/inventoryCardStyles'
 import CardFieldEdit from './CardFieldEdit';
 import CardImgGrid from './CardImgGrid';
@@ -11,12 +12,16 @@ import CardDamageEdit from './CardDamageEdit';
 import CardInvQty from './CardInvQty';
 import CardInvLocation from '../ui-Inventory/CardInvLocation';
 
-const CardEdit = (props) => {
+const CardEdit = () => {
     useEffect(() => {
+        setFirstLoad(true);
     }, []);
 
     const classes = cardTableStyles()
-    const { isEditModalOpen, editCardContents } = useSelector((state) => state.editModal)
+    const [firstLoad, setFirstLoad] = useState(false)
+    const editCardContents  = useSelector(selectModal)
+    const isEditModalOpen  = useSelector(selectModalOpen)
+    console.debug(firstLoad, isEditModalOpen,editCardContents)
     const dispatch = useDispatch()
     const handleClose = () => {
         /* check for changes and ask are you sure before leaving */
@@ -31,7 +36,7 @@ const CardEdit = (props) => {
         editCardContents &&
         <Dialog open={isEditModalOpen} fullWidth={true} maxWidth={'md'} onClose={handleClose}>
             <DialogActions sx={{pb: 0}}>
-                <Button onClick={handleClose}>Cancel</Button>
+                <Button onClick={dispatch(ActionCreators.undo())}>Cancel</Button>
                 <Button onClick={handleSave}>Save</Button>
             </DialogActions>
             <CardFieldEdit></CardFieldEdit>

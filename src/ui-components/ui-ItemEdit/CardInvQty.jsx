@@ -3,13 +3,13 @@ import { Dialog, DialogTitle, DialogContent, DialogContentText, TextField, Dialo
 import { Table, TableBody, TableCell, TableContainer, TableRow, Paper } from '@mui/material';
 // Context and Redux imports
 import { useSelector, useDispatch } from 'react-redux'
-import { setEditModalOpen, setImgEditModalOpen, setEditCardContents } from '../../features/CardActions/editSlice'
+import { selectModal, setEditModalOpen, setImgEditModalOpen, setEditCardContents } from '../../features/CardActions/editSlice'
 import { cardTableStyles } from '../../styles/inventoryCardStyles'
 
 const CardInvQty = (props) => {
     const [invLocations, setInvLocations] = useState([]);
     const classes = cardTableStyles()
-    const { isImgEditModalOpen, editCardContents } = useSelector((state) => state.editModal)
+    const editCardContents  = useSelector(selectModal)    
     const { orgProfile } = useSelector((state) => state.orgProfile)
     const dispatch = useDispatch()
     useEffect(() => {
@@ -34,6 +34,7 @@ const CardInvQty = (props) => {
     const handleChange = (props) => {
         /* check for changes and ask are you sure before leaving */
         console.log(props)
+        console.log(props.target.value, props.target.name)
     }
 
     return (
@@ -48,13 +49,13 @@ const CardInvQty = (props) => {
                                         <b>{row.locName}</b>
                                     </TableCell>
                                     <TableCell align="left" className={classes.tableCell}>
-                                        <TextField defaultValue={row.itemQty} label="Stock" type="number" inputProps={{min: 0}} margin="dense" size="small" variant="standard" />
+                                        <TextField name={`invQty.ByLoc[${row.id}].itemQty`} defaultValue={row.itemQty} label="Stock" type="number" onChange={handleChange} inputProps={{min: 0}} margin="dense" size="small" variant="standard" />
                                     </TableCell>
                                     <TableCell align="left" className={classes.tableCell}>
-                                        <TextField defaultValue={row.itemAisle} label="Aisle" type="text" margin="dense" size="small" variant="standard" />
+                                        <TextField name={`invQty.ByLoc[${row.id}].itemAisle`} defaultValue={row.itemAisle} label="Aisle" type="text" onChange={handleChange} margin="dense" size="small" variant="standard" />
                                     </TableCell>
                                     <TableCell align="left" className={classes.tableCell}>
-                                        <TextField defaultValue={row.itemBay} label="Bay" type="number" inputProps={{min: 0}} margin="dense" size="small" variant="standard" />
+                                        <TextField name={`invQty.ByLoc[${row.id}].itemBay`} defaultValue={row.itemBay} label="Bay" type="number" onChange={handleChange} inputProps={{min: 0}} margin="dense" size="small" variant="standard" />
                                     </TableCell>
                                 </TableRow>
                             ))}

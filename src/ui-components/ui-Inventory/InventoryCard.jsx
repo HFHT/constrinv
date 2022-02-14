@@ -80,7 +80,7 @@ export default function InventoryCard(props) {
     } */
     const handleInvEditClick = (props) => {
         console.log(props)
-        dispatch(setEditModalOpen(true))
+//        dispatch(setEditModalOpen(true))
         dispatch(setEditCardContents(props.listItem))
     }
     const handleAddPalletClick = (props) => {
